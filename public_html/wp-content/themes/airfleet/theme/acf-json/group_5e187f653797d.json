@@ -1,0 +1,129 @@
+{
+    "key": "group_5e187f653797d",
+    "title": "Options: HubSpot",
+    "fields": [
+        {
+            "key": "field_5e187f93562db",
+            "label": "Enabled",
+            "name": "hubspot_enabled",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5e187fd8562dc",
+            "label": "Include embed code",
+            "name": "hubspot_embed_enabled",
+            "type": "true_false",
+            "instructions": "More information about the embed code here: <a href=\"http:\/\/hubs.ly\/H0702_H0\" target=\"_blank\">http:\/\/hubs.ly\/H0702_H0<\/a>.<br>\r\nThis embed code is not required for loading standard forms, only for HubSpot features like analytics tracking, messages and pop-up forms.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e187f93562db",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5e188036562dd",
+            "label": "Embed code",
+            "name": "hubspot_embed_code",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e187f93562db",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_5e187fd8562dc",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5e3bfae77cf4b",
+            "label": "Portal ID",
+            "name": "hubspot_portal_id",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e187f93562db",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-hubspot"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1581525617
+}

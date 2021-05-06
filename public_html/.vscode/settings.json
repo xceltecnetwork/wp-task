@@ -1,0 +1,19 @@
+{
+    "eslint.workingDirectories": [
+        "./wp-content/themes/airfleet"
+    ],
+    "phpcs.composerJsonPath": "wp-content/themes/airfleet/composer.json",
+    "intelephense.files.exclude": [
+        "**/.git/**",
+        "**/.svn/**",
+        "**/.hg/**",
+        "**/CVS/**",
+        "**/.DS_Store/**",
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "**/vendor/**/{Test,test,Tests,tests}/**",
+        "**/wp-admin/**",
+        "**/wp-includes/**",
+        "**/wp-content/plugins/**"
+    ]
+}

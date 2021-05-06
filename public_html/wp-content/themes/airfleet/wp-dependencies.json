@@ -1,0 +1,64 @@
+[
+  {
+    "name": "Advanced Custom Fields Pro",
+    "host": "direct",
+    "slug": "advanced-custom-fields-pro/acf.php",
+    "uri": "https://drive.google.com/uc?export=download&id=1C_sj82hj-gKIwsswdR3_h7uGptz4cjQ6",
+    "optional": true
+  },
+  {
+    "name": "Duplicate Post",
+    "host": "wordpress",
+    "slug": "duplicate-post/duplicate-post.php",
+    "uri": "https://wordpress.org/plugins/duplicate-post/",
+    "optional": true
+  },
+  {
+    "name": "GitHub Updater",
+    "host": "github",
+    "slug": "github-updater/github-updater.php",
+    "uri": "afragen/github-updater",
+    "branch": "master",
+    "optional": true,
+    "token": null
+  },
+  {
+    "name": "Safe SVG",
+    "host": "wordpress",
+    "slug": "safe-svg/safe-svg.php",
+    "uri": "https://wordpress.org/plugins/safe-svg/",
+    "optional": true
+  },
+  {
+    "name": "Yoast SEO",
+    "host": "wordpress",
+    "slug": "wordpress-seo/wp-seo.php",
+    "uri": "https://wordpress.org/plugins/wordpress-seo/",
+    "optional": true
+  },
+  {
+    "name": "WP Rocket",
+    "host": "direct",
+    "slug": "wp-rocket_3.4.3/wp-rocket.php",
+    "uri": "https://drive.google.com/uc?export=download&id=1s0TQiei7THDHVTeM_fXObIYm0_EuERSO",
+    "optional": true
+  },
+  {
+    "name": "WP Sync DB",
+    "host": "github",
+    "slug": "wp-sync-db/wp-sync-db.php",
+    "uri": "wp-sync-db/wp-sync-db",
+    "branch": "master",
+    "optional": true,
+    "token": null
+  },
+  {
+    "name": "WP Sync DB Media Files",
+    "host": "github",
+    "slug": "wp-sync-db-media-files/wp-sync-db-media-files.php",
+    "uri": "wp-sync-db/wp-sync-db-media-files",
+    "branch": "master",
+    "optional": true,
+    "token": null
+  }
+]

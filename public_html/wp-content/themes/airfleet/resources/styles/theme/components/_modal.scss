@@ -1,0 +1,29 @@
+.c-modal--style-lightbox {
+  .modal-header {
+    border-bottom: 0;
+    padding: 0;
+
+    .modal-title {
+      display: none;
+    }
+  }
+
+  .modal-body {
+    padding: 0;
+  }
+
+  .modal-content {
+    background: transparent;
+    border: 0;
+
+    .close {
+      color: #fff;
+      opacity: 1;
+      padding: 10px 16px;
+      position: fixed;
+      right: 40px;
+      text-shadow: none;
+      top: 40px;
+    }
+  }
+}

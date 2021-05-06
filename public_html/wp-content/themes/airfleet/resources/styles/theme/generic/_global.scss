@@ -1,0 +1,8 @@
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.fixed-top {
+  @include top-after-admin-bar;
+}

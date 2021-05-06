@@ -1,0 +1,71 @@
+{
+    "key": "group_5d2b4b16764b3",
+    "title": "Component: Embed",
+    "fields": [
+        {
+            "key": "field_5d2b4b43fe203",
+            "label": "Embed Code",
+            "name": "embed_code",
+            "type": "textarea",
+            "instructions": "The code for the embeded element.\r\nExample: \r\n\"&lt;iframe class=\"embed-responsive-item\" src=\"*******\">&lt;\/iframe>\"",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5d2b4c2efe204",
+            "label": "Container",
+            "name": "container",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default",
+                "16by9": "Responsive 16:9",
+                "21by9": "Responsive 21:9",
+                "4by3": "Responsive 4:3",
+                "1by1": "Responsive 1:1"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "modified": 1578671432
+}

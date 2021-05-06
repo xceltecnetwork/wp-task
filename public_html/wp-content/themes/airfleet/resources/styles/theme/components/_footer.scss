@@ -1,0 +1,56 @@
+.c-footer {
+  background: $color-footer-background;
+  color: $color-footer-text;
+  padding: 2rem 0 0.8rem;
+
+  a {
+    &,
+    &:hover {
+      color: $color-footer-text;
+    }
+  }
+
+  .social {
+    @include media-breakpoint-up(md) {
+      float: right;
+    }
+  }
+}
+
+.c-footer__menu {
+  .menu {
+    @include list-unstyled();
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+    }
+
+    .menu-item {
+      flex: 1;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
+
+  .sub-menu {
+    @include list-unstyled();
+
+    .menu-item {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.c-footer__privacy-menu,
+.c-footer__copyright-text {
+  @include media-breakpoint-up(md) {
+    display: inline-block;
+  }
+}
+
+.c-footer__privacy-menu {
+  .menu {
+    @include list-inline();
+  }
+}

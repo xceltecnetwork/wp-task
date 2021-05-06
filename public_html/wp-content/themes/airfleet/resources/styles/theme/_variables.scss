@@ -1,0 +1,54 @@
+// Colors
+
+$theme-colors: $color;
+
+// Typography
+
+$font-family-sans-serif: Arial, Helvetica, sans-serif;
+$font-family-base: $font-family-sans-serif;
+$headings-font-family: null;
+
+// $font-size-base: 1rem;
+// $font-size-lg: $font-size-base * 1.25;
+// $font-size-sm: $font-size-base * .875;
+
+// $h1-font-size: $font-size-base * 2.5;
+// $h2-font-size: $font-size-base * 2 ;
+// $h3-font-size: $font-size-base * 1.75;
+// $h4-font-size: $font-size-base * 1.5;
+// $h5-font-size: $font-size-base * 1.25;
+// $h6-font-size: $font-size-base;
+
+$font-weights: (
+  thin: 100,
+  hairline: 100,
+  extra-light: 200,
+  ultra-light: 200,
+  light: 300,
+  regular: 400,
+  normal: 400,
+  medium: 500,
+  semi-bold: 600,
+  demi-bold: 600,
+  bold: 700,
+  extra-bold: 800,
+  ultra-bold: 800,
+  black: 900,
+  heavy: 900,
+);
+
+$social-colors: (
+  facebook: #3b5998,
+  linkedin: #50778b,
+  twitter: #55acee,
+  email: #666,
+);
+
+$margin-sides: 'bottom', 'top', 'left', 'right';
+
+$margin-sizes: (
+  none: 0,
+  small: 2rem,
+  medium: 6rem,
+  large: 12rem,
+);

@@ -1,0 +1,87 @@
+image: tetraweb/php
+
+# Required GitLab variables
+### Added directly in GitLab
+#SSH_PRIVATE_KEY
+#WPE_INSTANCE_NAME
+#WPE_INSTANCE_SSH
+#WPE_INSTANCE_SSH_BASE
+
+cache:
+  key: one-key-to-rule-them-all # share cache across all branches and jobs
+  paths:
+  - wp-content/themes/airfleet/node_modules/
+  - wp-content/themes/airfleet/vendor/
+  - wp-content/themes/airfleet/.yarn/
+  - wp-content/themes/airfleet/.composer-cache/
+  - wp-content/themes/airfleet/.imagemin-cache/
+
+test:
+  except:
+    - master
+  before_script:
+    - cd ./wp-content/themes/airfleet
+    # Set composer cache directory
+    - composer config -g cache-dir "$(pwd)/.composer-cache"
+    # Composer install
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress
+    # Install npm packages
+    - yarn install --pure-lockfile --cache-folder .yarn
+  script:
+    - yarn lint
+    - yarn build
+
+deploy:
+  only:
+    - master
+  before_script:
+    ##
+    ## Install yarn
+    ##
+    - npm -g install yarn
+    ##
+    ## Install ssh-agent if not already installed, it is required by Docker.
+    ## (change apt-get to yum if you use an RPM-based image)
+    ##
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+
+    ##
+    ## Run ssh-agent (inside the build environment)
+    ##
+    - eval $(ssh-agent -s)
+
+    ##
+    ## Export GitLab variable $SSH_PRIVATE_KEY to ~/.ssh dir
+    ##
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/codersclan_deploy_rsa
+    - chmod 600 ~/.ssh/codersclan_deploy_rsa
+
+    ##
+    ## Update ~/.ssh/config to use newly created SSH key
+    ##
+    - echo "host $WPE_INSTANCE_SSH_BASE" >> ~/.ssh/config
+    - echo " HostName $WPE_INSTANCE_SSH_BASE" >> ~/.ssh/config
+    - echo " IdentityFile ~/.ssh/codersclan_deploy_rsa" >> ~/.ssh/config
+
+    ##
+    ## Add our host to known hosts
+    ##
+    - ssh-keyscan $WPE_INSTANCE_SSH_BASE >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+
+
+    - cd ./wp-content/themes/airfleet
+    # Set composer cache directory
+    - composer config -g cache-dir "$(pwd)/.composer-cache"
+    # Composer install
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress
+    # Install npm packages
+    - yarn install --pure-lockfile --cache-folder .yarn
+  script:
+    - composer install
+    - yarn
+    - yarn build
+    - cd $CI_PROJECT_DIR
+    - rsync -rltuz -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='cache/' $CI_PROJECT_DIR/ $WPE_INSTANCE_SSH:~/sites/$WPE_INSTANCE_NAME
+  when: on_success

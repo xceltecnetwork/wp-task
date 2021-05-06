@@ -1,0 +1,118 @@
+/* ------------------------------------------------------------ *\
+    Settings
+\* ------------------------------------------------------------ */
+
+@import '~@styles/theme/functions';
+
+@import '~@styles/shared/config';
+@import '~@styles/shared/variables';
+@import '~@styles/shared/editor';
+
+/* ------------------------------------------------------------ *\
+    Editor
+\* ------------------------------------------------------------ */
+
+/* ------------------------------------------------------------ *\
+    Theme essencial
+\* ------------------------------------------------------------ */
+
+@import '~@styles/theme/variables';
+
+/* ------------------------------------------------------------ *\
+    Vendor
+\* ------------------------------------------------------------ */
+
+// Import Bootstrap functions/mixins/vars.
+// The rest will be imported inside a scope.
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+// @import '~bootstrap/scss/root';
+
+.acf-block-body {
+  // Import bootstrap styles inside this scope
+  // so it doesn't conflict with the rest of WP backend
+  @import '~bootstrap/scss/reboot';
+  @import '~bootstrap/scss/type';
+  @import '~bootstrap/scss/images';
+  @import '~bootstrap/scss/code';
+  @import '~bootstrap/scss/grid';
+  @import '~bootstrap/scss/tables';
+  @import '~bootstrap/scss/forms';
+  @import '~bootstrap/scss/buttons';
+  @import '~bootstrap/scss/transitions';
+  @import '~bootstrap/scss/dropdown';
+  @import '~bootstrap/scss/button-group';
+  @import '~bootstrap/scss/input-group';
+  @import '~bootstrap/scss/custom-forms';
+  @import '~bootstrap/scss/nav';
+  @import '~bootstrap/scss/navbar';
+  @import '~bootstrap/scss/card';
+  @import '~bootstrap/scss/breadcrumb';
+  @import '~bootstrap/scss/pagination';
+  @import '~bootstrap/scss/badge';
+  @import '~bootstrap/scss/jumbotron';
+  @import '~bootstrap/scss/alert';
+  @import '~bootstrap/scss/progress';
+  @import '~bootstrap/scss/media';
+  @import '~bootstrap/scss/list-group';
+  @import '~bootstrap/scss/close';
+  @import '~bootstrap/scss/toasts';
+  @import '~bootstrap/scss/modal';
+  @import '~bootstrap/scss/tooltip';
+  @import '~bootstrap/scss/popover';
+  @import '~bootstrap/scss/carousel';
+  @import '~bootstrap/scss/spinners';
+  @import '~bootstrap/scss/utilities';
+
+  // These are some styles that Bootstrap applies to the body.
+  // Because we are importing Bootstrap inside a scope, apply them manually.
+  @include font-size($font-size-base);
+  background-color: $body-bg;
+  color: $body-color;
+  font-family: $font-family-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+}
+
+/* ------------------------------------------------------------ *\
+    Theme
+\* ------------------------------------------------------------ */
+
+@import '~@styles/theme/sprite';
+@import '~@styles/theme/mixins/index';
+
+.acf-block-body {
+  // Theme styles
+  @import '~@styles/theme/generic/index';
+  @import '~@styles/theme/components/index';
+  @import '~@styles/theme/blocks/index';
+
+  /* stylelint-disable-next-line */
+  p {
+    // Reset font size for paragraphs
+    // (something else is setting it in backend)
+    font-size: inherit;
+  }
+
+  .card {
+    // Remove card padding
+    // (conflicting with another style in the backend)
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    // Reset heading color
+    // (something else is setting it in backend)
+    color: inherit;
+  }
+}
+
+.wp-block {
+  max-width: none;
+}
