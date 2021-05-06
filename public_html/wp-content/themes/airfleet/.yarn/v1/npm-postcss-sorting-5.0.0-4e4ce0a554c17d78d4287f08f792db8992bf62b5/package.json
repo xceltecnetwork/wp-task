@@ -1,0 +1,76 @@
+{
+  "name": "postcss-sorting",
+  "version": "5.0.0",
+  "description": "PostCSS plugin to keep rules and at-rules content in order.",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "sorting",
+    "order"
+  ],
+  "author": "Aleks Hudochenkov <aleks@hudochenkov.com>",
+  "license": "MIT",
+  "repository": "hudochenkov/postcss-sorting",
+  "bugs": {
+    "url": "https://github.com/hudochenkov/postcss-sorting/issues"
+  },
+  "homepage": "https://github.com/hudochenkov/postcss-sorting",
+  "files": [
+    "lib",
+    "!lib/**/__tests__",
+    "index.js",
+    "!.DS_Store"
+  ],
+  "engines": {
+    "node": ">=8.7.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "postcss": "^7.0.14"
+  },
+  "devDependencies": {
+    "eslint": "~5.16.0",
+    "eslint-config-hudochenkov": "~3.0.0",
+    "eslint-config-prettier": "~4.1.0",
+    "husky": "^1.3.1",
+    "jest": "^24.7.1",
+    "jest-watch-typeahead": "^0.3.0",
+    "lint-staged": "^8.1.5",
+    "postcss-html": "^0.36.0",
+    "postcss-jsx": "^0.36.0",
+    "postcss-syntax": "^0.36.2",
+    "prettier": "~1.17.0"
+  },
+  "scripts": {
+    "test": "npm run lint && jest",
+    "jest": "jest",
+    "watch": "jest --watch",
+    "coverage": "jest --coverage",
+    "fix": "npm run lint -- --fix && prettier --write *.js 'lib/**/*.js'",
+    "lint": "eslint *.js 'lib/**/*.js'"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "setupFiles": [
+      "./jest-setup.js"
+    ],
+    "testEnvironment": "node",
+    "testRegex": "__tests__/[a-zA-Z-]+\\.js$",
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

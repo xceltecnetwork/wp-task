@@ -1,0 +1,49 @@
+{
+  "manifest": {
+    "name": "multimap",
+    "version": "1.1.0",
+    "description": "multi-map which allow multiple values for the same key",
+    "main": "index.js",
+    "scripts": {
+      "lint": "./node_modules/.bin/jshint *.js test/*.js",
+      "test": "npm run lint; node test/index.js;node test/es6map.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/villadora/multi-map.git"
+    },
+    "bugs": {
+      "url": "https://github.com/villadora/multi-map/issues"
+    },
+    "keywords": [
+      "keys",
+      "map",
+      "multiple"
+    ],
+    "dependencies": {},
+    "devDependencies": {
+      "chai": "~1.7.2",
+      "es6-shim": "^0.13.0",
+      "jshint": "~2.1.9"
+    },
+    "readmeFilename": "README.md",
+    "author": {
+      "name": "villa.gao",
+      "email": "jky239@gmail.com"
+    },
+    "license": "MIT",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-multimap-1.1.0-5263febc085a1791c33b59bb3afc6a76a2a10ca8/package.json",
+    "readme": "# Multimap - Map which Allow Multiple Values for the same Key\n\n[![NPM version](https://badge.fury.io/js/multimap.svg)](http://badge.fury.io/js/multimap)\n[![Build Status](https://travis-ci.org/villadora/multi-map.png?branch=master)](https://travis-ci.org/villadora/multi-map)\n\n## Install\n\n```bash\nnpm install multimap --save\n```\n\n## Usage\n\n\nIf you'd like to use native version when it exists and fallback to polyfill if it doesn't, but without implementing `Map` on global scope, do:\n\n```javascript\nvar Multimap = require('multimap');\nvar m = new Multimap();\n```\n\nIf the global es6 `Map` exists or `Multimap.Map` is set, `Multimap` will use the `Map` as inner store, that means Object can be used as key.\n\n```javascript\nvar Multimap = require('multimap');\n\n// if harmony is on\n/* nothing need to do */\n// or if you are using es6-shim\nMultimap.Map = ShimMap;\n\nvar m = new Multimap();\nvar key = {};\nm.set(key, 'one');\n\n```\n\nOtherwise, an object will be used, all the keys will be transformed into string.\n\n\n### In Modern Browser\n\nJust download the `index.js` as `Multimap.js`.\n\n```\n<script src=Multimap.js\"></script>\n<script>\nvar map = new Multimap([['a', 1], ['b', 2], ['c', 3]]);\nmap = map.set('b', 20);\nmap.get('b'); // [2, 20]\n</script>\n```\n\nOr use as an AMD loader:\n\n```\nrequire(['./Multimap.js'], function (Multimap) {\n  var map = new Multimap([['a', 1], ['b', 2], ['c', 3]]);\n  map = map.set('b', 20);\n  map.get('b'); // [2, 20]\n});\n```\n\n* Browsers should support `Object.defineProperty` and `Array.prototype.forEach`.\n\n\n## API\n\nFollowing shows how to use `Multimap`:\n\n```javascript\nvar Multimap = require('multimap');\n\nvar map = new Multimap([['a', 'one'], ['b', 1], ['a', 'two'], ['b', 2]]);\n\nmap.size;                 // 4\nmap.count;                // 2\n\nmap.get('a');             // ['one', 'two']\nmap.get('b');             // [1, 2]\n\nmap.has('a');             // true\nmap.has('foo');           // false\n\nmap.has('a', 'one');      // true\nmap.has('b', 3);          // false\n\nmap.set('a', 'three');\nmap.size;                 // 5\nmap.count;                // 2\nmap.get('a');             // ['one', 'two', 'three']\n\nmap.set('b', 3, 4);\nmap.size;                 // 7\nmap.count;                // 2\n\nmap.delete('a', 'three'); // true\nmap.delete('x');          // false\nmap.delete('a', 'four');  // false\nmap.delete('b');          // true\n\nmap.size;                 // 2\nmap.count;                // 1\n\nmap.set('b', 1, 2);\nmap.size;                 // 4\nmap.count;                // 2\n\n\nmap.forEach(function (value, key) {\n  // iterates { 'one', 'a' }, { 'two', 'a' }, { 1, b }, { 2, 'b' }\n});\n\nmap.forEachEntry(function (entry, key) {\n  // iterates {['one', 'two'], 'a' }, {[1, 2], 'b' }\n});\n\n\nvar keys = map.keys();      // iterator with ['a', 'b']\nkeys.next().value;          // 'a'\nvar values = map.values();  // iterator ['one', 'two', 1, 2]\n\nmap.clear();                // undefined\nmap.size;                   // 0\nmap.count;                  // 0\n```\n\n\n\n\n## License\n\n(The MIT License)\n\nCopyright (c) 2013, Villa.Gao <jky239@gmail.com>;\nAll rights reserved.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/multimap/-/multimap-1.1.0.tgz#5263febc085a1791c33b59bb3afc6a76a2a10ca8",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/multimap/-/multimap-1.1.0.tgz",
+    "hash": "5263febc085a1791c33b59bb3afc6a76a2a10ca8",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "5263febc085a1791c33b59bb3afc6a76a2a10ca8"
+}

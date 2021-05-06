@@ -1,0 +1,98 @@
+{
+  "manifest": {
+    "name": "bail",
+    "version": "1.0.4",
+    "description": "Throw a given error",
+    "license": "MIT",
+    "keywords": [
+      "fail",
+      "bail",
+      "throw",
+      "callback",
+      "error"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/wooorm/bail.git"
+    },
+    "bugs": {
+      "url": "https://github.com/wooorm/bail/issues"
+    },
+    "author": {
+      "name": "Titus Wormer",
+      "email": "tituswormer@gmail.com",
+      "url": "https://wooorm.com"
+    },
+    "contributors": [
+      {
+        "name": "Titus Wormer",
+        "email": "tituswormer@gmail.com",
+        "url": "https://wooorm.com"
+      }
+    ],
+    "files": [
+      "index.js"
+    ],
+    "dependencies": {},
+    "devDependencies": {
+      "browserify": "^16.0.0",
+      "nyc": "^14.0.0",
+      "prettier": "^1.12.0",
+      "remark-cli": "^6.0.0",
+      "remark-preset-wooorm": "^4.0.0",
+      "tape": "^4.0.0",
+      "tinyify": "^2.5.0",
+      "xo": "^0.24.0"
+    },
+    "scripts": {
+      "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
+      "build-bundle": "browserify index.js -s bail -o bail.js",
+      "build-mangle": "browserify index.js -s bail -p tinyify -o bail.min.js",
+      "build": "npm run build-bundle && npm run build-mangle",
+      "test-api": "node test",
+      "test-coverage": "nyc --reporter lcov tape test.js",
+      "test": "npm run format && npm run build && npm run test-coverage"
+    },
+    "prettier": {
+      "tabWidth": 2,
+      "useTabs": false,
+      "singleQuote": true,
+      "bracketSpacing": false,
+      "semi": false,
+      "trailingComma": "none"
+    },
+    "xo": {
+      "prettier": true,
+      "esnext": false,
+      "ignores": [
+        "bail.js"
+      ]
+    },
+    "remarkConfig": {
+      "plugins": [
+        "preset-wooorm"
+      ]
+    },
+    "nyc": {
+      "check-coverage": true,
+      "lines": 100,
+      "functions": 100,
+      "branches": 100
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-bail-1.0.4-7181b66d508aa3055d3f6c13f0a0c720641dde9b/package.json",
+    "readmeFilename": "readme.md",
+    "readme": "# bail\n\n[![Build][build-badge]][build]\n[![Coverage][coverage-badge]][coverage]\n[![Downloads][downloads-badge]][downloads]\n[![Size][size-badge]][size]\n\n:warning: Throw a given error.\n\n## Installation\n\n[npm][npm-install]:\n\n```bash\nnpm install bail\n```\n\n## Usage\n\n```js\nvar bail = require('bail')\n\nbail()\n\nbail(new Error('failure'))\n// Error: failure\n//     at repl:1:6\n//     at REPLServer.defaultEval (repl.js:154:27)\n//     ...\n```\n\n## API\n\n### `bail([err])`\n\nThrow a given error.\n\n###### Parameters\n\n*   `err` (`Error?`) — Optional error.\n\n###### Throws\n\n*   `Error` — Given error, if any.\n\n## Related\n\n*   [`noop`][noop]\n*   [`noop2`][noop2]\n*   [`noop3`][noop3]\n\n## License\n\n[MIT][license] © [Titus Wormer][author]\n\n<!-- Definitions -->\n\n[build-badge]: https://img.shields.io/travis/wooorm/bail.svg\n\n[build]: https://travis-ci.org/wooorm/bail\n\n[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/bail.svg\n\n[coverage]: https://codecov.io/github/wooorm/bail\n\n[downloads-badge]: https://img.shields.io/npm/dm/bail.svg\n\n[downloads]: https://www.npmjs.com/package/bail\n\n[size-badge]: https://img.shields.io/bundlephobia/minzip/bail.svg\n\n[size]: https://bundlephobia.com/result?p=bail\n\n[npm-install]: https://docs.npmjs.com/cli/install\n\n[license]: license\n\n[author]: https://wooorm.com\n\n[noop]: https://www.npmjs.com/package/noop\n\n[noop2]: https://www.npmjs.com/package/noop2\n\n[noop3]: https://www.npmjs.com/package/noop3\n",
+    "licenseText": "(The MIT License)\n\nCopyright (c) 2015 Titus Wormer <tituswormer@gmail.com>\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n'Software'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/bail/-/bail-1.0.4.tgz#7181b66d508aa3055d3f6c13f0a0c720641dde9b",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/bail/-/bail-1.0.4.tgz",
+    "hash": "7181b66d508aa3055d3f6c13f0a0c720641dde9b",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "7181b66d508aa3055d3f6c13f0a0c720641dde9b"
+}

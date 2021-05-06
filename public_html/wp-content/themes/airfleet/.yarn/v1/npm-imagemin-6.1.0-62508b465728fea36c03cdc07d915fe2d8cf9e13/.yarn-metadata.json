@@ -1,0 +1,65 @@
+{
+  "manifest": {
+    "name": "imagemin",
+    "version": "6.1.0",
+    "description": "Minify images",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/imagemin/imagemin.git"
+    },
+    "engines": {
+      "node": ">=6"
+    },
+    "scripts": {
+      "test": "xo && ava"
+    },
+    "files": [
+      "index.js"
+    ],
+    "keywords": [
+      "minify",
+      "compress",
+      "image",
+      "images",
+      "jpeg",
+      "jpg",
+      "png",
+      "gif",
+      "svg"
+    ],
+    "dependencies": {
+      "file-type": "^10.7.0",
+      "globby": "^8.0.1",
+      "make-dir": "^1.0.0",
+      "p-pipe": "^1.1.0",
+      "pify": "^4.0.1",
+      "replace-ext": "^1.0.0"
+    },
+    "devDependencies": {
+      "ava": "^1.0.1",
+      "del": "^3.0.0",
+      "imagemin-jpegtran": "^6.0.0",
+      "imagemin-svgo": "^7.0.0",
+      "imagemin-webp": "^5.0.0",
+      "is-jpg": "^2.0.0",
+      "tempy": "^0.2.1",
+      "xo": "^0.23.0"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-imagemin-6.1.0-62508b465728fea36c03cdc07d915fe2d8cf9e13/package.json",
+    "readmeFilename": "readme.md",
+    "readme": "# imagemin [![Build Status](https://travis-ci.org/imagemin/imagemin.svg?branch=master)](https://travis-ci.org/imagemin/imagemin) [![Build status](https://ci.appveyor.com/api/projects/status/wlnem7wef63k4n1t?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/imagemin)\n\n> Minify images seamlessly\n\n\n## Install\n\n```\n$ npm install imagemin\n```\n\n\n## Usage\n\n```js\nconst imagemin = require('imagemin');\nconst imageminJpegtran = require('imagemin-jpegtran');\nconst imageminPngquant = require('imagemin-pngquant');\n\n(async () => {\n\tconst files = await imagemin(['images/*.{jpg,png}'], 'build/images', {\n\t\tplugins: [\n\t\t\timageminJpegtran(),\n\t\t\timageminPngquant({quality: '65-80'})\n\t\t]\n\t});\n\n\tconsole.log(files);\n\t//=> [{data: <Buffer 89 50 4e …>, path: 'build/images/foo.jpg'}, …]\n})();\n```\n\n\n## API\n\n### imagemin(input, [output], [options])\n\nReturns `Promise<Object[]>` in the format `{data: Buffer, path: string}`.\n\n#### input\n\nType: `string[]`\n\nFiles to be optimized. See supported `minimatch` [patterns](https://github.com/isaacs/minimatch#usage).\n\n#### output\n\nType: `string`\n\nSet the destination folder to where your files will be written. If no destination is specified no files will be written.\n\n#### options\n\nType: `Object`\n\n##### plugins\n\nType: `Array`\n\n[Plugins](https://www.npmjs.com/browse/keyword/imageminplugin) to use.\n\n### imagemin.buffer(buffer, [options])\n\nReturns `Promise<Buffer>`.\n\n#### buffer\n\nType: `Buffer`\n\nBuffer to optimize.\n\n#### options\n\nType: `Object`\n\n##### plugins\n\nType: `Array`\n\n[Plugins](https://www.npmjs.com/browse/keyword/imageminplugin) to use.\n\n\n## Related\n\n- [imagemin-cli](https://github.com/imagemin/imagemin-cli) - CLI for this module\n- [imagemin-app](https://github.com/imagemin/imagemin-app) - GUI app for this module\n- [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) - Gulp plugin\n- [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin) - Grunt plugin\n\n\n## License\n\nMIT © [imagemin](https://github.com/imagemin)\n",
+    "licenseText": "MIT License\n\nCopyright (c) Imagemin (github.com/imagemin)\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/imagemin/-/imagemin-6.1.0.tgz#62508b465728fea36c03cdc07d915fe2d8cf9e13",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/imagemin/-/imagemin-6.1.0.tgz",
+    "hash": "62508b465728fea36c03cdc07d915fe2d8cf9e13",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "62508b465728fea36c03cdc07d915fe2d8cf9e13"
+}

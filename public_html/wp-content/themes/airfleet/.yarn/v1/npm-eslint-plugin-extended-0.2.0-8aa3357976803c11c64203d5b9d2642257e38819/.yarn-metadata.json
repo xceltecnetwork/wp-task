@@ -1,0 +1,49 @@
+{
+  "manifest": {
+    "name": "eslint-plugin-extended",
+    "version": "0.2.0",
+    "description": "eslint-plugin-extended is a set of rules for ESLint.",
+    "contributors": [
+      {
+        "name": "Golo Roden",
+        "email": "golo.roden@thenativeweb.io"
+      },
+      {
+        "name": "Matthias Wagler",
+        "email": "matthias.wagler@thenativeweb.io"
+      }
+    ],
+    "main": "lib/extended.js",
+    "dependencies": {
+      "varname": "2.0.2"
+    },
+    "devDependencies": {
+      "gulp": "3.9.1",
+      "mocha": "2.4.5",
+      "roboter": "0.5.1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/thenativeweb/eslint-plugin-extended.git"
+    },
+    "keywords": [
+      "eslint",
+      "eslintplugin"
+    ],
+    "license": "MIT",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-eslint-plugin-extended-0.2.0-8aa3357976803c11c64203d5b9d2642257e38819/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# eslint-plugin-extended\n\neslint-plugin-extended is a set of rules for ESLint.\n\n## Installation\n\n```bash\n$ npm install eslint-plugin-extended\n```\n\n## Quick start\n\nFirst you need to add eslint-plugin-extended as a plugin to your ESLint configuration. See the [ESLint documentation](http://eslint.org/docs/user-guide/configuring#configuring-plugins) for details how to do this.\n\n### consistent-err-names\n\nWhen using `err` as a parameter name, from time to time you want to use `err` as a prefix or a suffix, as shown in the following example.\n\n```javascript\nfs.readFile('/etc/passwd', (errReadFile, data) => {\n  // ...\n});\n```\n\nIn these cases you want to make sure that `err` is consistently used as prefix or as suffix. For this, use the `consistent-err-names` rule and configure it to use `err` as `prefix` or as `suffix`. If you do not specify an option, the rule uses `prefix` as default.\n\n```javascript\nconsistent-err-names: [ 2, 'prefix' ]\n```\n\n## Running the build\n\nTo build this module use [roboter](https://www.npmjs.com/package/roboter).\n\n```bash\n$ bot build-server\n```\n\n## License\n\nThe MIT License (MIT)\nCopyright (c) 2015-2016 the native web.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/eslint-plugin-extended/-/eslint-plugin-extended-0.2.0.tgz#8aa3357976803c11c64203d5b9d2642257e38819",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/eslint-plugin-extended/-/eslint-plugin-extended-0.2.0.tgz",
+    "hash": "8aa3357976803c11c64203d5b9d2642257e38819",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "8aa3357976803c11c64203d5b9d2642257e38819"
+}

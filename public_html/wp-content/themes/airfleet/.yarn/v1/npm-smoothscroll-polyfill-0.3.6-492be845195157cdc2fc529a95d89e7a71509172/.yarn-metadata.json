@@ -1,0 +1,62 @@
+{
+  "manifest": {
+    "title": "smoothscroll",
+    "name": "smoothscroll-polyfill",
+    "version": "0.3.6",
+    "author": {
+      "name": "Dustan Kasten",
+      "email": "dustan.kasten@gmail.com",
+      "url": "https://iamdustan.com"
+    },
+    "contributors": [
+      {
+        "name": "Jeremias Menichelli",
+        "email": "jmenichelli@gmail.com",
+        "url": "https://jeremenichelli.github.io"
+      }
+    ],
+    "devDependencies": {
+      "gulp": "^3.9.1",
+      "gulp-concat-util": "^0.5.5",
+      "gulp-eslint": "^2.0.0",
+      "gulp-load-plugins": "^1.2.4"
+    },
+    "description": "Polyfill for smooth scroll behavior",
+    "main": "dist/smoothscroll.js",
+    "scripts": {
+      "test": "gulp lint",
+      "build": "gulp"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/iamdustan/smoothscroll.git"
+    },
+    "keywords": [
+      "smooth",
+      "scroll",
+      "CSSOM",
+      "polyfill"
+    ],
+    "copyright": 2016,
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/iamdustan/smoothscroll/issues"
+    },
+    "homepage": "https://iamdustan.github.io/smoothscroll",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-smoothscroll-polyfill-0.3.6-492be845195157cdc2fc529a95d89e7a71509172/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Smooth Scroll behavior polyfill\n\nThe [Scroll Behavior specification](https://developer.mozilla.org/en/docs/Web/CSS/scroll-behavior) has been introduced as an extension of the `Window` interface to allow for the developer to opt in to native smooth scrolling. To date this has only been implemented in _Firefox_.\n\nSee it in action https://iamdustan.github.io/smoothscroll\n\n\n## Install\n\nDownload the distribution file from this repository and include it in your project.\n\nYou can also find it in **npm** as **smoothscroll-polyfill** or **bower** as **smoothscroll**.\n\n```js\nrequire('smoothscroll-polyfill').polyfill();\n```\n\n_Requires requestAnimationFrame polyfill for browsers which don't support it!_\n\n\n## Contribute\n\nFork the repository and run **npm install**.\n\nAfter any modification make sure it doesn't break in any of the supported browsers, check linting and build running **npm run build** and then open a pull request.\n\n\n## Browser Support\n\nSuccessfully tested in:\n\n- Safari 6+\n- iOS Safari 6+\n- Chrome (last version)\n- _natively supported in Firefox_\n- Internet Explorer 9+\n- Microsoft Edge\n- Opera Next\n\nIf you have tested this and worked as expected in a different browser let us know so we can add it to the list, if not [open an issue](https://github.com/iamdustan/smoothscroll/issues) providing browser, browser version and a good description about it.\n\n## Standards documentation\n\n- http://dev.w3.org/csswg/cssom-view\n- http://lists.w3.org/Archives/Public/www-style/2013Mar/0314.html\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2013 Dustan Kasten\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/smoothscroll-polyfill/-/smoothscroll-polyfill-0.3.6.tgz#492be845195157cdc2fc529a95d89e7a71509172",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/smoothscroll-polyfill/-/smoothscroll-polyfill-0.3.6.tgz",
+    "hash": "492be845195157cdc2fc529a95d89e7a71509172",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "492be845195157cdc2fc529a95d89e7a71509172"
+}

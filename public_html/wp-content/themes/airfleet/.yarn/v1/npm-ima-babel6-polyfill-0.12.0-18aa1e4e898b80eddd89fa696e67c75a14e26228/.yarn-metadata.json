@@ -1,0 +1,49 @@
+{
+  "manifest": {
+    "name": "ima-babel6-polyfill",
+    "version": "0.12.0",
+    "description": "Babel 6 polyfill for IE<=10",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/seznam/IMA.js-babel6-polyfill.git"
+    },
+    "publishConfig": {
+      "registry": "http://registry.npmjs.org/"
+    },
+    "keywords": [
+      "gulp",
+      "ima.js",
+      "ima",
+      "babel6",
+      "polyfill",
+      "IE<=10"
+    ],
+    "author": {
+      "name": "Seznam.cz, a.s."
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/seznam/IMA.js-babel6-polyfill/issues"
+    },
+    "homepage": "https://github.com/seznam/IMA.js-babel6-polyfill",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-ima-babel6-polyfill-0.12.0-18aa1e4e898b80eddd89fa696e67c75a14e26228/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# IMA.js-babel6-polyfill\n\nThis repository contains a fix for IE9&10 of the super-constructor calls in the Babel 6 runtime.\n\nIf you are looking for a way to start a new IMA.js application, you should\nfollow this link:\n[https://github.com/seznam/IMA.js-skeleton](https://github.com/seznam/IMA.js-skeleton).\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2015 Seznam.cz a.s.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/ima-babel6-polyfill/-/ima-babel6-polyfill-0.12.0.tgz#18aa1e4e898b80eddd89fa696e67c75a14e26228",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/ima-babel6-polyfill/-/ima-babel6-polyfill-0.12.0.tgz",
+    "hash": "18aa1e4e898b80eddd89fa696e67c75a14e26228",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "18aa1e4e898b80eddd89fa696e67c75a14e26228"
+}

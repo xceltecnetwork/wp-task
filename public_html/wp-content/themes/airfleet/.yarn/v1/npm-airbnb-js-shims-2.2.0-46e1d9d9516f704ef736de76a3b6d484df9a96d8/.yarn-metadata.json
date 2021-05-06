@@ -1,0 +1,76 @@
+{
+  "manifest": {
+    "name": "airbnb-js-shims",
+    "version": "2.2.0",
+    "description": "JS language shims used by Airbnb.",
+    "main": "index.js",
+    "scripts": {
+      "prepublish": "safe-publish-latest",
+      "lint": "eslint .",
+      "pretest": "npm run lint",
+      "test": "npm run tests-only",
+      "tests-only": "node test",
+      "posttest": "npm run audit",
+      "preaudit": "npm install --package-lock --package-lock-only",
+      "audit": "npm audit",
+      "postaudit": "rm package-lock.json"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/airbnb/js-shims.git"
+    },
+    "keywords": [
+      "shims",
+      "polyfills"
+    ],
+    "author": {
+      "name": "Jordan Harband",
+      "email": "ljharb@gmail.com"
+    },
+    "license": "MIT",
+    "dependencies": {
+      "array-includes": "^3.0.3",
+      "array.prototype.flat": "^1.2.1",
+      "array.prototype.flatmap": "^1.2.1",
+      "es5-shim": "^4.5.13",
+      "es6-shim": "^0.35.5",
+      "function.prototype.name": "^1.1.0",
+      "globalthis": "^1.0.0",
+      "object.entries": "^1.1.0",
+      "object.fromentries": "^2.0.0 || ^1.0.0",
+      "object.getownpropertydescriptors": "^2.0.3",
+      "object.values": "^1.1.0",
+      "promise.allsettled": "^1.0.0",
+      "promise.prototype.finally": "^3.1.0",
+      "string.prototype.matchall": "^3.0.1",
+      "string.prototype.padend": "^3.0.0",
+      "string.prototype.padstart": "^3.0.0",
+      "symbol.prototype.description": "^1.0.0"
+    },
+    "devDependencies": {
+      "eslint": "^5.16.0",
+      "eslint-config-airbnb-base": "^13.1.0",
+      "eslint-plugin-import": "^2.17.2",
+      "safe-publish-latest": "^1.1.2",
+      "tape": "^4.10.1"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-airbnb-js-shims-2.2.0-46e1d9d9516f704ef736de76a3b6d484df9a96d8/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# airbnb-js-shims <sup>[![Version Badge][2]][1]</sup>\n\nJS language shims used by Airbnb.\n\nJust require/import `airbnb-js-shims`, and the environment will be shimmed.\n\n```js\nimport 'airbnb-js-shims';\n```\n\n## Included shims\n\n - [es5-shim](https://www.npmjs.com/package/es5-shim)\n - [es5-sham](https://www.npmjs.com/package/es5-shim)\n - [es6-shim](https://www.npmjs.com/package/es6-shim)\n - [Function.prototype.name](https://www.npmjs.com/package/function.prototype.name)\n - [Array.prototype.includes](https://www.npmjs.com/package/array-includes) (ES7/ES2016)\n - [Object.entries](https://www.npmjs.com/package/object.entries) (ES8/ES2017)\n - [Object.values](https://www.npmjs.com/package/object.values) (ES8/ES2017)\n - [String.prototype.padStart](https://www.npmjs.com/package/string.prototype.padstart) (ES8/ES2017)\n - [String.prototype.padEnd](https://www.npmjs.com/package/string.prototype.padend) (ES8/ES2017)\n - [Promise.prototype.finally](https://npmjs.com/package/promise.prototype.finally) (ES2018)\n - [Array.prototype.flat](https://npmjs.com/package/array.prototype.flat) (ES2019)\n - [Array.prototype.flatMap](https://npmjs.com/package/array.prototype.flatmap) (ES2019)\n - [Symbol.prototype.description](https://npmjs.com/package/symbol.prototype.description) (ES2019)\n - [Object.fromEntries](https://npmjs.com/package/object.fromentries) (ES2019)\n - [String.prototype.matchAll](https://npmjs.com/package/string.prototype.matchall) (ES2019)\n - [globalThis](https://www.npmjs.com/package/globalthis) (Stage 3)\n - [Promise.allSettled](https://www.npmjs.com/package/promise.allsettled) (Stage 3)\n\n## Targeting versions\n\nIf you do not need to support older browsers, you can pick a subset of ES versions to target. For example, if you don't support pre-ES5 browsers, you can start your shims with ES2015 by requiring/importing the specific target file. This will shim the environment for that version and upward.\n\n```js\nimport 'airbnb-js-shims/target/es2015';\n```\n\n### Included targets\n\n- `airbnb-js-shims/target/es5` (default)\n- `airbnb-js-shims/target/es2015`\n- `airbnb-js-shims/target/es2016`\n- `airbnb-js-shims/target/es2017`\n- `airbnb-js-shims/target/es2018`\n- `airbnb-js-shims/target/es2019`\n- `airbnb-js-shims/target/es2020`\n\n[1]: https://npmjs.org/package/airbnb-js-shims\n[2]: http://versionbadg.es/airbnb/js-shims.svg\n",
+    "licenseText": "Copyright 2015 Airbnb\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/airbnb-js-shims/-/airbnb-js-shims-2.2.0.tgz#46e1d9d9516f704ef736de76a3b6d484df9a96d8",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/airbnb-js-shims/-/airbnb-js-shims-2.2.0.tgz",
+    "hash": "46e1d9d9516f704ef736de76a3b6d484df9a96d8",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "46e1d9d9516f704ef736de76a3b6d484df9a96d8"
+}

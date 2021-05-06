@@ -1,0 +1,1 @@
+<?php /**PATH D:\local\wp-test-theme\app\public\wp-content\themes\airfleet\theme/components/footer.blade.php ENDPATH**/ ?>

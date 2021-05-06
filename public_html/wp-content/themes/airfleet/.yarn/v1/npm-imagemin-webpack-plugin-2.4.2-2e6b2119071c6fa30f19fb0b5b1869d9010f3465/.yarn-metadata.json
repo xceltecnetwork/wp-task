@@ -1,0 +1,98 @@
+{
+  "manifest": {
+    "name": "imagemin-webpack-plugin",
+    "version": "2.4.2",
+    "description": "Webpack plugin to compress images",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+      "dist",
+      "src"
+    ],
+    "scripts": {
+      "clean": "rimraf dist",
+      "test": "standard src/*",
+      "build": "babel src --out-dir dist --copy-files --source-maps",
+      "prepublishOnly": "babel src --out-dir dist --copy-files --source-maps"
+    },
+    "engines": {
+      "node": ">=4.0.0"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Klathmon/imagemin-webpack-plugin.git"
+    },
+    "standard": {},
+    "babel": {
+      "plugins": [
+        "transform-runtime",
+        "transform-object-rest-spread"
+      ],
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": 4
+            }
+          }
+        ]
+      ]
+    },
+    "author": {
+      "name": "Gregory Benner",
+      "email": "gregbenner1@gmail.com",
+      "url": "https://github.com/Klathmon"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/Klathmon/imagemin-webpack-plugin/issues"
+    },
+    "homepage": "https://github.com/Klathmon/imagemin-webpack-plugin#readme",
+    "dependencies": {
+      "@types/imagemin-gifsicle": "^5.2.0",
+      "@types/imagemin-jpegtran": "^5.0.0",
+      "@types/imagemin-optipng": "^5.2.0",
+      "@types/imagemin-svgo": "^7.0.0",
+      "@types/webpack": "^4.4.24",
+      "async-throttle": "^1.1.0",
+      "babel-runtime": "^6.18.0",
+      "imagemin": "^6.1.0",
+      "imagemin-gifsicle": "^6.0.1",
+      "imagemin-jpegtran": "^6.0.0",
+      "imagemin-optipng": "^6.0.0",
+      "imagemin-pngquant": "^6.0.0",
+      "imagemin-svgo": "^7.0.0",
+      "lodash.map": "^4.6.0",
+      "minimatch": "^3.0.4",
+      "mkdirp": "^0.5.1",
+      "util.promisify": "^1.0.0",
+      "webpack-sources": "^1.1.0"
+    },
+    "devDependencies": {
+      "babel-cli": "^6.26.0",
+      "babel-eslint": "^8.2.6",
+      "babel-plugin-transform-object-rest-spread": "^6.26.0",
+      "babel-plugin-transform-runtime": "^6.23.0",
+      "babel-preset-env": "^1.7.0",
+      "np": "^2.20.1",
+      "rimraf": "^2.6.2",
+      "standard": "^11.0.1"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-imagemin-webpack-plugin-2.4.2-2e6b2119071c6fa30f19fb0b5b1869d9010f3465/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Imagemin plugin for Webpack\n\n[![npm](https://img.shields.io/npm/v/imagemin-webpack-plugin.svg)](https://www.npmjs.com/package/imagemin-webpack-plugin)\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)\n[![npm](https://img.shields.io/npm/dt/imagemin-webpack-plugin.svg)](https://www.npmjs.com/package/imagemin-webpack-plugin)\n\nThis is a simple plugin that uses [Imagemin](https://github.com/imagemin/imagemin) to compress all images in your project.\n\n## Install\n\n`npm install imagemin-webpack-plugin`\n\nRequires node >=4.0.0\n\n## Example Usage\n\n```js\nvar ImageminPlugin = require('imagemin-webpack-plugin').default\n// Or if using ES2015:\n// import ImageminPlugin from 'imagemin-webpack-plugin'\n\nmodule.exports = {\n  plugins: [\n    // Make sure that the plugin is after any plugins that add images\n    new ImageminPlugin({\n      disable: process.env.NODE_ENV !== 'production', // Disable during development\n      pngquant: {\n        quality: '95-100'\n      }\n    })\n  ]\n}\n```\n\nWorking with [copy-webpack-plugin](https://github.com/kevlened/copy-webpack-plugin):\n\n```js\nmodule.exports = {\n  plugins: [\n    // Copy the images folder and optimize all the images\n    new CopyWebpackPlugin([{\n      from: 'images/'\n    }]),\n    new ImageminPlugin({ test: /\\.(jpe?g|png|gif|svg)$/i })\n  ]\n}\n```\n\n*Note the order of the plugins matters. `ImageminWebpackPlugin` must be placed after `CopyWebpackPlugin` (or any other plugins that deal with images) in `plugins` array.*\n\n## API\n\n### new ImageminPlugin(options)\n\n#### options.disable\n\n**type**: `Boolean`\n**default**: `false`\n\nWhen set to `true` it will disable the plugin entirely. This is useful for disabling the plugin during development, and only enabling it during production\n\n#### options.test\n\n**type**: `RegExp` or `String` or `Array`\n**default**: `/.*/`\n\nThis plugin will only run on files that match this test. This is similar to the webpack loader `test` option (but is not using the same implementation, so there might be major differences!). This can either be a RegExp object, a [minimatch glob](https://github.com/isaacs/minimatch), a function which gets the filename and returns `true` if the file should be minified, or an array of any of them.\n\nThis can allow you to only run the plugin on specific files, or even include the plugin multiple times for different sets of images and apply different imagemin settings to each.\n\nThis will overwrite everything, including the `externalImages` option!\n\nExample:\n\n```js\nimport ImageminPlugin from 'imagemin-webpack-plugin'\n\nmodule.exports = {\n  plugins: [\n    // Use the default settings for everything in /images/*\n    new ImageminPlugin({ test: 'images/**' }),\n    // bump up the optimization level for all the files in my `bigpngs` directory\n    new ImageminPlugin({\n      test: 'bigpngs/**',\n      optipng: {\n        optimizationLevel: 9\n      }\n    })\n  ]\n}\n```\n\n#### options.maxConcurrency\n\n**type**: `Number`\n**default**: the number of logical CPUS on the system\n\nSets the maximum number of instances of Imagemin that can run at once. Set to `Infinity` to run a seperate process per image all at the same time.\n\n#### options.optipng\n\n**type**: `Object` or `null`\n**default**: `{ optimizationLevel: 3 }`\n\nPasses the given object to [`imagemin-optipng`](https://github.com/imagemin/imagemin-optipng). Set to `null` to disable optipng.\n\n#### options.gifsicle\n\n**type**: `Object` or `null`\n**default**: `{ optimizationLevel: 1 }`\n\nPasses the given object to [`imagemin-gifsicle`](https://github.com/imagemin/imagemin-gifsicle). Set to `null` to disable gifsicle.\n\n#### options.jpegtran\n\n**type**: `Object` or `null`\n**default**: `{ progressive: false }`\n\nPasses the given object to [`imagemin-jpegtran`](https://github.com/imagemin/imagemin-jpegtran). Set to `null` to disable jpegtran.\n\n#### options.svgo\n\n**type**: `Object` or `null`\n**default**: `{}`\n\nPasses the given object to [`imagemin-svgo`](https://github.com/imagemin/imagemin-svgo). Set to `null` to disable svgo.\n\n#### options.pngquant\n\n**type**: `Object` or `null`\n**default**: `null`\n\nPasses the given object to [`imagemin-pngquant`](https://github.com/imagemin/imagemin-pngquant). Disabled by default.\n\n#### options.plugins\n\n**type**: `Array`\n**default**: `[]`\n\nInclude any additional plugins that you want to work with imagemin here. By default the above are included, but if you want (or need to) you can disable them (by setting them to `null`) and include them yourself here.\n\nA list of possible imagemin plugins can be found [here](https://www.npmjs.com/search?q=imagemin%20plugin).\n\nExample:\n\n```js\nimport ImageminPlugin from 'imagemin-webpack-plugin'\nimport imageminMozjpeg from 'imagemin-mozjpeg'\n\nmodule.exports = {\n  plugins: [\n    new ImageminPlugin({\n      plugins: [\n        imageminMozjpeg({\n          quality: 100,\n          progressive: true\n        })\n      ]\n    })\n  ]\n}\n```\n\n#### options.externalImages\n\n**type**: `Object`\n**default**: `{ context: '.', sources: [], destination: null, fileName: null }`\n\nInclude any external images (those not included in webpack's compilation assets) that you want to be parsed by imagemin.\nIf a destination value is not supplied the files are optimized in place. You can optionally set either of these to a function which will be invoked at the last possible second before optimization to grab files that might not exist at the time of writing the config (see #37 for more info).\n\nThe paths will work based on the webpack's (and this plugin's) `context` option, so in the following example, the files will be read from `./src/images/**/*.png` and will be written to `.src/public/images/**/*.png` Context only applies to the `sources` array.\n\nExample:\n\n```js\nimport ImageminPlugin from 'imagemin-webpack-plugin'\nimport glob from 'glob'\n\nmodule.exports = {\n  plugins: [\n    new ImageminPlugin({\n      externalImages: {\n        context: 'src', // Important! This tells the plugin where to \"base\" the paths at\n        sources: glob.sync('src/images/**/*.png'),\n        destination: 'src/public/images',\n        fileName: '[path][name].[ext]' // (filePath) => filePath.replace('jpg', 'webp') is also possible\n      }\n    })\n  ]\n}\n```\n\n#### options.minFileSize\n\n**type**: `Integer`\n**default**: `0`\n\nOnly apply to images that are **larger** than this value *in bytes*.\n\n#### options.maxFileSize\n\n**type**: `Integer`\n**default**: `Infinity`\n\nOnly apply to images that are **smaller than or equal-to** this value *in bytes*.\n\nThis and `minFileSize` together can be used to include WebpackImageminPlugin multiple times with multiple configs on different file sizes.\n\nExample:\n\n```js\nimport ImageminPlugin from 'imagemin-webpack-plugin'\nimport glob from 'glob'\n\nmodule.exports = {\n  plugins: [\n    new ImageminPlugin({\n      maxFileSize: 10000, // Only apply this one to files equal to or under 10kb\n      jpegtran: { progressive: false }\n    }),\n    new ImageminPlugin({\n      minFileSize: 10000, // Only apply this one to files over 10kb\n      jpegtran: { progressive: true }\n    })\n  ]\n}\n```\n\n#### options.cacheFolder\n\n**type**: `String`\n**default**: `''`\n\nCache already minified images into a `cacheFolder`. On next run plugin will\ncheck for the cached images first. If cached image exists it will simply use that one.\nOtherwise image will be optimised and written to the `cacheFolder` for later builds.\n\n**Note**: This is a very simple cache implementation, it WILL NOT intelligently clear the\ncache if you update the options in this plugin. There also might be significantly more files in the cache than you have images, this is normal, and a side-effect of how I'm deferring to `imagemin` to determine if a file is an image or not. It can be prevented by setting a good `test` regex.\n\nExample:\n\n```js\nimport resolve from 'path'\nimport ImageminPlugin from 'imagemin-webpack-plugin'\n\nmodule.exports = {\n  plugins: [\n    new ImageminPlugin({\n      cacheFolder: resolve('./cache'), // use existing folder called cache in the current dir\n    })\n  ]\n}\n```\n\n### Troubleshooting\n\nIf you get an error similar to `Error in parsing SVG: Unquoted attribute value` while using SVGO, you most likely have un-quoted attributes in the SVG image. A workaround can be found [here](https://github.com/Klathmon/imagemin-webpack-plugin/issues/25) from @vzaidman. They also made an issue upstream which should fix it at the source [here](https://github.com/svg/svgo/issues/678).\n\n## FAQ\n\n**Why?**\nI was suprised that there weren't any Imagemin plugins for webpack, so I made one!\n\n**Why not use [`image-webpack-loader`](https://github.com/tcoopman/image-webpack-loader)?**\nBecause I had other things like the [`favicons-webpack-plugin`](https://github.com/jantimon/favicons-webpack-plugin) and [`responsive-loader`](https://github.com/herrstucki/responsive-loader) that were generating images that I couldn't have `image-webpack-loader` optimize. This plugin will optimize ANY images regardless of how they were added to webpack. Plus `image-webpack-loader` is currently using an older version of imagemin.\n\n**Can you add this new feature?**\nMaybe... I'm trying to keep this a small single-purpose plugin, but if you want a feature feel free to open an issue and I'll take a look.\n\n## Inspiration\n\n*   Big thanks to [`image-webpack-loader`](https://github.com/tcoopman/image-webpack-loader) for the idea.\n*   Used [`compression-webpack-plugin`](https://github.com/webpack/compression-webpack-plugin) to learn how to write the plugin. It's source code is a better tutorial on how to write plugins than the webpack documentation is...\n\n## Contributing\n\n[See the CONTRIBUTING file here](CONTRIBUTING.md)\n\n## License\n\n[MIT](LICENSE.md) Copyright (c) [Gregory Benner](https://github.com/Klathmon)\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2018 Gregory Benner <gregbenner1@gmail.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/imagemin-webpack-plugin/-/imagemin-webpack-plugin-2.4.2.tgz#2e6b2119071c6fa30f19fb0b5b1869d9010f3465",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/imagemin-webpack-plugin/-/imagemin-webpack-plugin-2.4.2.tgz",
+    "hash": "2e6b2119071c6fa30f19fb0b5b1869d9010f3465",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "2e6b2119071c6fa30f19fb0b5b1869d9010f3465"
+}

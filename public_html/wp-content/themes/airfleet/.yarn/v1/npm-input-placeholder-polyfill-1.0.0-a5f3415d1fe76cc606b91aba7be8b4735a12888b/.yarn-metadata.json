@@ -1,0 +1,53 @@
+{
+  "manifest": {
+    "name": "input-placeholder-polyfill",
+    "version": "1.0.0",
+    "description": "A simple polyfill for IE8 and 9 that populates the value when empty",
+    "main": "dist/main.min.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/christopherrolfe198/input-placeholder-polyfill.git"
+    },
+    "keywords": [
+      "input",
+      "placeholder",
+      "polyfill",
+      "IE8",
+      "IE9"
+    ],
+    "author": {
+      "name": "Christopher Rolfe"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/christopherrolfe198/input-placeholder-polyfill/issues"
+    },
+    "homepage": "https://github.com/christopherrolfe198/input-placeholder-polyfill",
+    "devDependencies": {
+      "del": "^1.0.0",
+      "gulp": "^3.8.10",
+      "gulp-concat": "^2.4.2",
+      "gulp-minify": "0.0.5",
+      "gulp-rename": "^1.2.0",
+      "gulp-uglifyjs": "^0.5.0"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-input-placeholder-polyfill-1.0.0-a5f3415d1fe76cc606b91aba7be8b4735a12888b/package.json",
+    "readmeFilename": "README.md",
+    "readme": "input-placeholder-polyfill\n==========================\n\n A simple polyfill for IE8 and 9 that populates the value of an input field with the placeholder, without the need for an external library.\n\n # Install\n ## NPM\n\n`npm install --save input-placeholder-polyfill`\n\n ## Bower\n\n`bower install input-placeholder-polyfill`\n\n# Use\n\nIt's as easy as adding the item to the page with script tags.\nWe use feature detection so if you have native support we do nothing!",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2014 Christopher Rolfe\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/input-placeholder-polyfill/-/input-placeholder-polyfill-1.0.0.tgz#a5f3415d1fe76cc606b91aba7be8b4735a12888b",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/input-placeholder-polyfill/-/input-placeholder-polyfill-1.0.0.tgz",
+    "hash": "a5f3415d1fe76cc606b91aba7be8b4735a12888b",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "a5f3415d1fe76cc606b91aba7be8b4735a12888b"
+}

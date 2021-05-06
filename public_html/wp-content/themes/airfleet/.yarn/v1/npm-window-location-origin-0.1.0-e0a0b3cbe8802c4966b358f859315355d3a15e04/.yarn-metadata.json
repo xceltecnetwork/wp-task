@@ -1,0 +1,48 @@
+{
+  "manifest": {
+    "name": "window-location-origin",
+    "version": "0.1.0",
+    "description": "Add support for browsers that don't natively support window.location.origin",
+    "main": "src/window-location-origin.js",
+    "scripts": {
+      "test": "testem ci --skip chromium"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/kylewelsby/window-location-origin"
+    },
+    "keywords": [
+      "window.location.origin",
+      "window",
+      "location",
+      "origin",
+      "polifil"
+    ],
+    "author": {
+      "name": "kyle welsby",
+      "email": "kyle@mekyle.com"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/kylewelsby/window-location-origin/issues"
+    },
+    "devDependencies": {
+      "testem": "~1.13"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-window-location-origin-0.1.0-e0a0b3cbe8802c4966b358f859315355d3a15e04/package.json",
+    "readmeFilename": "README.md",
+    "readme": "[![Travis](https://img.shields.io/travis/kylewelsby/window-location-origin.svg)](https://travis-ci.org/kylewelsby/window-location-origin) [![npm](https://img.shields.io/npm/v/window-location-origin.svg)](https://www.npmjs.com/package/window-location-origin)\n[![Bower](https://img.shields.io/bower/v/window-location-origin.svg)](https://github.com/kylewelsby/window-location-origin)\n[![Libraries.io for GitHub](https://img.shields.io/librariesio/github/kylewelsby/window-location-origin.svg)](https://libraries.io/github/kylewelsby/window-location-origin) [![license](https://img.shields.io/github/license/kylewelsby/window-location-origin.svg)](https://github.com/kylewelsby/window-location-origin)\n\nwindow-location-origin.js\n=========================\n\nAdd support for browsers that don't natively support [`window.location.origin`](https://developer.mozilla.org/en-US/docs/Web/API/window.location)\n\n### Example\n\n    window.location.origin\n    // #=> https://github.com\n\n### Install\n\n##### Bower\n\n    bower install window-location-origin\n\n\nInclude the script into your site\n\n    <script src=\"bower_components/window-location-origin.js\"></script>\n\n##### NPM\n\n    npm install window-location-origin\n\nRequire the script into your project\n\n    require 'window-location-origin'\n\n\nStackoverflow discussion: [JavaScript/jQuery method to find base URL from a string](http://stackoverflow.com/a/6167979/580513)\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2013 Kyle Welsby\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/window-location-origin/-/window-location-origin-0.1.0.tgz#e0a0b3cbe8802c4966b358f859315355d3a15e04",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/window-location-origin/-/window-location-origin-0.1.0.tgz",
+    "hash": "e0a0b3cbe8802c4966b358f859315355d3a15e04",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "e0a0b3cbe8802c4966b358f859315355d3a15e04"
+}

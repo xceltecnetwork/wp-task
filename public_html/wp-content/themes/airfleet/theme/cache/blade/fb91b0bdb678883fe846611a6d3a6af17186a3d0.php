@@ -1,0 +1,1 @@
+<?php /**PATH /var/www/abc.xceltec.in/public_html/wp-content/themes/airfleet/theme/components/footer.blade.php ENDPATH**/ ?>

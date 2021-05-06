@@ -1,0 +1,83 @@
+{
+  "manifest": {
+    "name": "stylelint-config-sass-guidelines",
+    "version": "6.0.0",
+    "description": "Sharable stylelint config based on https://sass-guidelin.es/",
+    "keywords": [
+      "stylelint",
+      "stylelint-config",
+      "stylelint-scss",
+      "scss",
+      "sass",
+      "guidelines"
+    ],
+    "author": {
+      "name": "Brett Jankord"
+    },
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/bjankord/stylelint-config-sass-guidelines.git"
+    },
+    "homepage": "https://github.com/bjankord/stylelint-config-sass-guidelines#readme",
+    "bugs": {
+      "url": "https://github.com/bjankord/stylelint-config-sass-guidelines/issues"
+    },
+    "main": "index.js",
+    "files": [
+      "index.js"
+    ],
+    "engines": {
+      "node": ">=8.7.0"
+    },
+    "dependencies": {
+      "stylelint-order": "^3.0.0",
+      "stylelint-scss": "^3.4.0"
+    },
+    "peerDependencies": {
+      "stylelint": "^10.0.1"
+    },
+    "devDependencies": {
+      "@babel/cli": "^7.2.0",
+      "@babel/core": "^7.2.0",
+      "@babel/preset-env": "^7.2.0",
+      "babel-tape-runner": "^3.0.0",
+      "prepend-file": "^1.3.1",
+      "shelljs": "^0.8.1",
+      "stylelint": "^10.0.1",
+      "tape": "^4.2.0"
+    },
+    "scripts": {
+      "build": "node scripts/build.js",
+      "release:major": "npm test && npm run build && npm version major -m \"Released version %s\" && npm publish && git push --follow-tags",
+      "release:minor": "npm test && npm run build && npm version minor -m \"Released version %s\" && npm publish && git push --follow-tags",
+      "release:patch": "npm test && npm run build && npm version patch -m \"Released version %s\" && npm publish && git push --follow-tags",
+      "scss-lint-failing-case": "cd src; bundle exec scss-lint failing-test-cases.scss -c .scss-lint.yml; exit 0",
+      "scss-lint-passing-case": "cd src; bundle exec scss-lint passing-test-cases.scss -c .scss-lint.yml; exit 0",
+      "stylelint-failing-case": "cd src; stylelint failing-test-cases.scss; exit 0",
+      "stylelint-passing-case": "cd src; stylelint passing-test-cases.scss; exit 0",
+      "tape": "babel-tape-runner \"__tests__/**/*.js\"",
+      "test": "npm run build && npm run tape"
+    },
+    "babel": {
+      "presets": [
+        "@babel/preset-env"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-stylelint-config-sass-guidelines-6.0.0-e81a5452a52be2578dbb570a56dde1216514b6b6/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# stylelint-config-sass-guidelines\n\n[![Greenkeeper badge](https://badges.greenkeeper.io/bjankord/stylelint-config-sass-guidelines.svg)](https://greenkeeper.io/)\n[![NPM version](http://img.shields.io/npm/v/stylelint-config-sass-guidelines.svg)](https://www.npmjs.org/package/stylelint-config-sass-guidelines)\n[![Build Status](https://travis-ci.org/bjankord/stylelint-config-sass-guidelines.svg?branch=master)](https://travis-ci.org/bjankord/stylelint-config-sass-guidelines)\n[![Dependency Status](https://david-dm.org/bjankord/stylelint-config-sass-guidelines.svg)](https://david-dm.org/bjankord/stylelint-config-sass-guidelines)\n[![devDependency Status](https://david-dm.org/bjankord/stylelint-config-sass-guidelines/dev-status.svg)](https://david-dm.org/bjankord/stylelint-config-sass-guidelines/?type=dev)\n[![Downloads per month](https://img.shields.io/npm/dm/stylelint-config-sass-guidelines.svg)](http://npmcharts.com/compare/stylelint-config-sass-guidelines)\n\n> Sass Guidelines shareable config for stylelint.\n\nA stylelint config based on [sass-guidelin.es](https://sass-guidelin.es/)\n\n## Installation\n\n```console\n$ npm install --save stylelint-config-sass-guidelines\n```\n\n## Usage\n\nSet your stylelint config to:\n\n```json\n{\n  \"extends\": \"stylelint-config-sass-guidelines\"\n}\n```\n\n### Extending the config\n\nSimply add a `\"rules\"` key to your config and add your overrides there.\n\nFor example, to change the `indentation` to tabs and turn off the `number-leading-zero` rule:\n\n\n```json\n{\n  \"extends\": \"stylelint-config-sass-guidelines\",\n  \"rules\": {\n    \"indentation\": \"tab\",\n    \"number-leading-zero\": null\n  }\n}\n```\n\n## [Lint Rule Comparison](https://github.com/bjankord/stylelint-config-sass-guidelines/wiki/Lint-Rule-Comparison)\n\n## [Lint Report Comparison](https://github.com/bjankord/stylelint-config-sass-guidelines/wiki/Lint-Report-Comparison)\n\n## Documentation\n\n### Plugins\n\n* [`stylelint-order`](https://github.com/hudochenkov/stylelint-order): A plugin pack of order related linting rules for stylelint.\n* [`stylelint-scss`](https://github.com/kristerkari/stylelint-scss): A collection of SCSS specific linting rules for stylelint\n\n### Configured lints\n\nThis is a list of the lints turned on in this configuration, and what they do.\n\n#### At-rule\n\n* [`at-rule-blacklist`](http://stylelint.io/user-guide/rules/at-rule-blacklist/): Specify a blacklist of disallowed at-rules.\n  * `\"debug\"` Disallow the use of `@debug`.\n* [`at-rule-no-vendor-prefix`](http://stylelint.io/user-guide/rules/at-rule-no-vendor-prefix/): Disallow vendor prefixes for at-rules.\n\n#### Block\n\n* [`block-no-empty`](http://stylelint.io/user-guide/rules/block-no-empty/): Disallow empty blocks.\n* [`block-opening-brace-space-before`](http://stylelint.io/user-guide/rules/block-opening-brace-space-before/): There must always be a single space before the opening brace.\n\n#### Color\n\n* [`color-hex-case`](http://stylelint.io/user-guide/rules/color-hex-case/): Hex colors must be written in lowercase.\n* [`color-hex-length`](http://stylelint.io/user-guide/rules/color-hex-length/): Always use short hex notation, where available.\n* [`color-named`](http://stylelint.io/user-guide/rules/color-named/): Colors must never be named.\n* [`color-no-invalid-hex`](http://stylelint.io/user-guide/rules/color-no-invalid-hex/): Hex values must be valid.\n\n#### Declaration\n\n* [`declaration-bang-space-after`](http://stylelint.io/user-guide/rules/declaration-bang-space-after/): There must never be whitespace after the bang.\n* [`declaration-bang-space-before`](http://stylelint.io/user-guide/rules/declaration-bang-space-before/): There must always be a single space before the bang.\n* [`declaration-colon-space-after`](http://stylelint.io/user-guide/rules/declaration-colon-space-after/): There must always be a single space after the colon if the declaration's value is single-line.\n* [`declaration-colon-space-before`](http://stylelint.io/user-guide/rules/declaration-colon-space-before/): There must never be whitespace before the colon.\n\n#### Declaration block\n\n* [`declaration-block-properties-order`](http://stylelint.io/user-guide/rules/declaration-block-properties-order/): Properties in declaration blocks must be sorted alphabetically.\n* [`declaration-block-semicolon-newline-after`](http://stylelint.io/user-guide/rules/declaration-block-semicolon-newline-after/): There must always be a newline after the semicolon.\n* [`declaration-block-semicolon-space-before`](http://stylelint.io/user-guide/rules/declaration-block-semicolon-space-before/): There must never be whitespace before the semicolons.\n* [`declaration-block-single-line-max-declarations`](http://stylelint.io/user-guide/rules/declaration-block-single-line-max-declarations/): There should never be more than `1` declaration per line.\n* [`declaration-block-trailing-semicolon`](http://stylelint.io/user-guide/rules/declaration-block-trailing-semicolon/): There must always be a trailing semicolon.\n\n#### Declaration Property\n\n* [`declaration-property-value-blacklist`](http://stylelint.io/user-guide/rules/declaration-property-value-blacklist/): Specify a blacklist of disallowed property and value pairs within declarations.\n  * `^border`: Disallow the use of the word `none` for borders, use `0` instead.\n\n#### Function\n\n* [`function-comma-space-after`](http://stylelint.io/user-guide/rules/function-comma-space-after/): There must always be a single space after the commas in single-line functions.\n* [`function-parentheses-space-inside`](http://stylelint.io/user-guide/rules/function-parentheses-space-inside/): There must never be whitespace on the inside of the parentheses of functions.\n* [`function-url-quotes`](http://stylelint.io/user-guide/rules/function-url-quotes/): URLs must always be quoted.\n\n#### General\n\n* [`indentation`](http://stylelint.io/user-guide/rules/indentation/): Indentation should always be `2` spaces.\n* [`length-zero-no-unit`](http://stylelint.io/user-guide/rules/length-zero-no-unit/): Disallow units for zero lengths.\n* [`max-nesting-depth`](http://stylelint.io/user-guide/rules/max-nesting-depth/): Limit the allowed nesting depth to `1`. _Ignore_: Nested at-rules `@media`, `@supports`, and `@include`.\n* [`no-missing-eof-newline`](http://stylelint.io/user-guide/rules/no-missing-eof-newline/): Disallow missing end-of-file newlines in non-empty files.\n\n#### Media Feature\n\n* [`media-feature-name-no-vendor-prefix`](http://stylelint.io/user-guide/rules/media-feature-name-no-vendor-prefix/): Disallow vendor prefixes for media feature names.\n\n#### Number\n\n* [`number-leading-zero`](http://stylelint.io/user-guide/rules/number-leading-zero/): There must always be a leading zero.\n* [`number-no-trailing-zeros`](http://stylelint.io/user-guide/rules/number-no-trailing-zeros/): Disallow trailing zeros in numbers.\n\n#### Property\n\n* [`property-no-vendor-prefix`](http://stylelint.io/user-guide/rules/property-no-vendor-prefix/): Disallow vendor prefixes for properties.\n* [`shorthand-property-no-redundant-values`](http://stylelint.io/user-guide/rules/shorthand-property-no-redundant-values/): Disallow redundant values in shorthand properties.\n\n\n#### Rule\n\n* [`rule-nested-empty-line-before`](http://stylelint.io/user-guide/rules/rule-nested-empty-line-before/): There must always be an empty line before multi-line rules. _Except_: Nested rules that are the first of their parent rule. _Ignore_: Rules that come after a comment.\n* [`rule-non-nested-empty-line-before`](http://stylelint.io/user-guide/rules/rule-non-nested-empty-line-before/): There must always be an empty line before multi-line rules. _Ignore_: Rules that come after a comment.\n\n#### SCSS\n* [`at-extend-no-missing-placeholder`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/at-extend-no-missing-placeholder/README.md): Disallow at-extends (`@extend`) with missing placeholders.\n* [`at-function-pattern`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/at-function-pattern/README.md): SCSS functions must be written in lowercase and match the regex `^[a-z]+([a-z0-9-]+[a-z0-9]+)?$`.\n* [`at-import-no-partial-leading-underscore`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/at-import-no-partial-leading-underscore/README.md): Disallow leading underscore in partial names in `@import`.\n* [`at-import-partial-extension-blacklist`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/at-import-partial-extension-blacklist/README.md): Specify blacklist of disallowed file extensions for partial names in `@import` commands.\n  * `.scss`: Disallow the use of the `.scss` file extension in imports.\n* [`at-mixin-pattern`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/at-mixin-pattern/README.md): SCSS mixins must be written in lowercase and match the regex `^[a-z]+([a-z0-9-]+[a-z0-9]+)?$`.\n* [`dollar-variable-colon-space-after`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/dollar-variable-colon-space-after/README.md): Require a single space after the colon in $-variable declarations.\n* [`dollar-variable-colon-space-before`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/dollar-variable-colon-space-before/README.md): Disallow whitespace before the colon in $-variable declarations.\n* [`dollar-variable-pattern`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/dollar-variable-pattern/README.md): SCSS variables must be written in lowercase and match the regex `^[a-z]+([a-z0-9-]+[a-z0-9]+)?$`.\n* [`percent-placeholder-pattern`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/percent-placeholder-pattern/README.md): SCSS `%`-placeholders must be written in lowercase and match the regex `^[a-z]+([a-z0-9-]+[a-z0-9]+)?$`.\n* [`selector-no-redundant-nesting-selector`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/selector-no-redundant-nesting-selector/README.md): Disallow redundant nesting selectors (`&`).\n\n#### Selector\n\n* [`selector-class-pattern`](http://stylelint.io/user-guide/rules/selector-class-pattern/): Selectors must be written in lowercase and match the regex `^(?:u|is|has)-[a-z][a-zA-Z0-9]*$|^(?!u|is|has)[a-zA-Z][a-zA-Z0-9]*(?:-[a-z][a-zA-Z0-9]*)?(?:--[a-z][a-zA-Z0-9]*)?$`.\n* [`selector-list-comma-newline-after`](http://stylelint.io/user-guide/rules/selector-list-comma-newline-after/): There must always be a newline after the commas of selector lists.\n* [`selector-max-compound-selectors`](http://stylelint.io/user-guide/rules/selector-max-compound-selectors/): Limit the number of compound selectors in a selector to `3`.\n* [`selector-no-id`](http://stylelint.io/user-guide/rules/selector-no-id/): Disallow id selectors.\n* [`selector-no-qualifying-type`](http://stylelint.io/user-guide/rules/selector-no-qualifying-type/): Disallow qualifying a selector by type.\n* [`selector-no-vendor-prefix`](http://stylelint.io/user-guide/rules/selector-no-vendor-prefix/): Disallow vendor prefixes for selectors.\n* [`selector-pseudo-element-colon-notation`](http://stylelint.io/user-guide/rules/selector-pseudo-element-colon-notation/): Applicable pseudo-elements must always use the double colon notation.\n* [`selector-pseudo-element-no-unknown`](http://stylelint.io/user-guide/rules/selector-pseudo-element-no-unknown/): Disallow unknown pseudo-element selectors.\n\n#### String\n\n* [`string-quotes`](http://stylelint.io/user-guide/rules/string-quotes/): Strings must always be wrapped with single quotes.\n\n#### Stylelint Disable Comment\n\n* [`stylelint-disable-reason`](http://stylelint.io/user-guide/rules/stylelint-disable-reason/): Require a reason comment before stylelint-disable comments.\n\n#### Value\n\n* [`value-no-vendor-prefix`](http://stylelint.io/user-guide/rules/value-no-vendor-prefix/): Disallow vendor prefixes for values.\n\n## [Changelog](CHANGELOG.md)\n\n## [License](LICENSE)\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2016-Present Brett Jankord\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/stylelint-config-sass-guidelines/-/stylelint-config-sass-guidelines-6.0.0.tgz#e81a5452a52be2578dbb570a56dde1216514b6b6",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/stylelint-config-sass-guidelines/-/stylelint-config-sass-guidelines-6.0.0.tgz",
+    "hash": "e81a5452a52be2578dbb570a56dde1216514b6b6",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "e81a5452a52be2578dbb570a56dde1216514b6b6"
+}

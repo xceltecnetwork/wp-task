@@ -1,0 +1,67 @@
+{
+  "manifest": {
+    "name": "symbol.prototype.description",
+    "version": "1.0.0",
+    "description": "Spec-compliant shim for Symbol.prototype.description proposal.",
+    "main": "index.js",
+    "scripts": {
+      "lint": "eslint .",
+      "postlint": "es-shim-api --bound --skip-shim-returns-polyfill",
+      "security": "nsp check",
+      "tests-only": "node test && node test/shimmed",
+      "pretest": "npm run lint",
+      "test": "npm run tests-only",
+      "posttest": "npm run security"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git@github.com:es-shims/Symbol.prototype.description.git"
+    },
+    "keywords": [
+      "polyfill",
+      "shim",
+      "es",
+      "shim",
+      "ecmascript",
+      "symbol",
+      "description"
+    ],
+    "author": {
+      "name": "Jordan Harband",
+      "email": "ljharb@gmail.com"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/es-shims/Symbol.prototype.description/issues"
+    },
+    "homepage": "https://github.com/es-shims/Symbol.prototype.description#readme",
+    "dependencies": {
+      "has-symbols": "^1.0.0"
+    },
+    "devDependencies": {
+      "@es-shims/api": "^2.1.2",
+      "@ljharb/eslint-config": "^12.2.1",
+      "eslint": "^4.16.0",
+      "nsp": "^3.1.0",
+      "tape": "^4.8.0"
+    },
+    "engines": {
+      "node": ">= 0.12"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-symbol.prototype.description-1.0.0-6e355660eb1e44ca8ad53a68fdb72ef131ca4b12/package.json",
+    "readmeFilename": "README.md",
+    "readme": "Symbol.prototype.description <sup>[![Version Badge][npm-version-svg]][package-url]</sup>\n\n[![Build Status][travis-svg]][travis-url]\n[![dependency status][deps-svg]][deps-url]\n[![dev dependency status][dev-deps-svg]][dev-deps-url]\n[![License][license-image]][license-url]\n[![Downloads][downloads-image]][downloads-url]\n\n[![npm badge][npm-badge-png]][package-url]\n\n[![browser support][testling-svg]][testling-url]\n\nAn ECMAScript spec-compliant `Symbol.prototype.description` shim. Invoke its \"shim\" method to shim Symbol.prototype.description if it is unavailable.\n*Note*: `Symbol#description` requires a true ES6 environment, specifically one with native Symbols.\n\nThis package implements the [es-shim API](https://github.com/es-shims/api) interface. It works in an ES6-supported environment and complies with the [spec](https://github.com/michaelficarra/Symbol-description-proposal/).\n\nMost common usage:\n```js\nvar description = require('symbol.prototype.description');\n\nassert(description(Symbol('foo')) === 'foo');\nassert(description(Symbol()) === undefined);\nassert(description(Symbol(undefined)) === undefined);\nassert(description(Symbol(null)) === 'null');\n\n// note: this should be the empty string, but in many engines,\n// it is impossible to distinguish Symbol() and Symbol('')\n// without globally replacing `Symbol`\nassert(description(Symbol('')) === undefined);\n\nif (!Symbol.prototype.description) {\n\tdescription.shim();\n}\n\nassert(description(Symbol('foo')) === Symbol('foo').description);\nassert(description(Symbol()) === Symbol().description);\nassert(description(Symbol(undefined)) === Symbol(undefined).description);\nassert(description(Symbol(null)) === Symbol(null).description);\n\nassert(Symbol('').description === ''); // this works fine!\n```\n\n## Tests\nSimply clone the repo, `npm install`, and run `npm test`\n\n[package-url]: https://npmjs.com/package/symbol.prototype.description\n[npm-version-svg]: http://versionbadg.es/es-shims/Symbol.prototype.description.svg\n[travis-svg]: https://travis-ci.org/es-shims/Symbol.prototype.description.svg\n[travis-url]: https://travis-ci.org/es-shims/Symbol.prototype.description\n[deps-svg]: https://david-dm.org/es-shims/Symbol.prototype.description.svg\n[deps-url]: https://david-dm.org/es-shims/Symbol.prototype.description\n[dev-deps-svg]: https://david-dm.org/es-shims/Symbol.prototype.description/dev-status.svg\n[dev-deps-url]: https://david-dm.org/es-shims/Symbol.prototype.description#info=devDependencies\n[testling-svg]: https://ci.testling.com/es-shims/Symbol.prototype.description.png\n[testling-url]: https://ci.testling.com/es-shims/Symbol.prototype.description\n[npm-badge-png]: https://nodei.co/npm/symbol.prototype.description.png?downloads=true&stars=true\n[license-image]: http://img.shields.io/npm/l/symbol.prototype.description.svg\n[license-url]: LICENSE\n[downloads-image]: http://img.shields.io/npm/dm/symbol.prototype.description.svg\n[downloads-url]: http://npm-stat.com/charts.html?package=symbol.prototype.description\n",
+    "licenseText": "MIT License\n\nCopyright (c) 2017 Jordan Harband\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/symbol.prototype.description/-/symbol.prototype.description-1.0.0.tgz#6e355660eb1e44ca8ad53a68fdb72ef131ca4b12",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/symbol.prototype.description/-/symbol.prototype.description-1.0.0.tgz",
+    "hash": "6e355660eb1e44ca8ad53a68fdb72ef131ca4b12",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "6e355660eb1e44ca8ad53a68fdb72ef131ca4b12"
+}

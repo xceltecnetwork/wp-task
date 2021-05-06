@@ -1,0 +1,72 @@
+{
+  "manifest": {
+    "name": "airbnb-browser-shims",
+    "version": "3.3.0",
+    "description": "Browser and JS shims used by Airbnb.",
+    "main": "index.js",
+    "scripts": {
+      "prepublish": "safe-publish-latest",
+      "lint": "eslint .",
+      "pretest": "npm run lint",
+      "test": "npm run tests-only",
+      "tests-only": "node test",
+      "posttest": "npx aud"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/airbnb/browser-shims.git"
+    },
+    "keywords": [
+      "shims",
+      "polyfills"
+    ],
+    "author": {
+      "name": "Jordan Harband",
+      "email": "ljharb@gmail.com"
+    },
+    "license": "MIT",
+    "dependencies": {
+      "airbnb-js-shims": "^2.1.1",
+      "classlist-polyfill": "^1.2.0",
+      "console-polyfill": "^0.3.0",
+      "document.contains": "^1.0.0",
+      "element-closest": "^2.0.2",
+      "focus-visible": "^5.0.2",
+      "ima-babel6-polyfill": "^0.12.0",
+      "input-placeholder-polyfill": "^1.0.0",
+      "intersection-observer": "^0.5.1",
+      "matchmedia-polyfill": "^0.3.1",
+      "raf": "^3.4.1",
+      "ric-shim": "^1.0.0",
+      "shim-keyboard-event-key": "^1.0.3",
+      "smoothscroll-polyfill": "^0.3.6",
+      "whatwg-fetch": "^0.11.1",
+      "window-location-origin": "^0.1.0"
+    },
+    "devDependencies": {
+      "eslint": "^5.15.1",
+      "eslint-config-airbnb-base": "^13.1.0",
+      "eslint-plugin-import": "^2.16.0",
+      "safe-publish-latest": "^1.1.2",
+      "tape": "^4.10.1"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-airbnb-browser-shims-3.3.0-ff71c66b7d07d6e0f4e90c971cd47e3165292868/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# airbnb-browser-shims <sup>[![Version Badge][2]][1]</sup>\n\nBrowser and JS language shims used by Airbnb.\n\nJust require/import `airbnb-browser-shims`, and the environment will be shimmed.\n\n```js\nimport 'airbnb-browser-shims';\n```\n\n## Included shims\n\n - JS language shims from [airbnb-js-shims](https://github.com/airbnb/js-shims)\n - [ima-babel6-polyfill](https://www.npmjs.com/package/ima-babel6-polyfill) - fixes Babel 6 bugs with `super` calls in IE 9 and 10\n - [document.contains](https://developer.mozilla.org/en/docs/Web/API/Node/contains)\n - [classlist-polyfill](https://www.npmjs.com/package/classlist-polyfill) - Element.prototype.classList polyfill (only in browsers)\n - [raf](https://www.npmjs.com/package/raf) - requestAnimationFrame polyfill for browsers and node\n - [requestIdleCallback](https://www.npmjs.com/package/ric-shim)\n - [matchmedia-polyfill](https://github.com/paulirish/matchMedia.js/) - window.matchMedia polyfill (only in browsers)\n - [whatwg-fetch](https://github.com/github/fetch) - fetch polyfill (only in browsers, supports IE9+)\n - [shim-keyboard-event-key](https://github.com/shvaikalesh/shim-keyboard-event-key) - KeyboardEvent.key shim\n - `TouchList[Symbol.iterator]` - when `Symbol` and `TouchList` are both present\n - [element-closest](https://npmjs.com/element-closest) - Element.prototype.closest polyfill (only in browsers)\n - [smoothscroll-polyfill](https://www.npmjs.com/package/smoothscroll-polyfill) - Scroll behavior specification polyfill (only in browsers)\n - [window-location-origin](https://www.npmjs.com/package/window-location-origin) - window.location.origin (for IE < 11)\n - [input-placeholder-polyfill](https://www.npmjs.com/package/input-placeholder-polyfill) - input placeholder polyfill (for IE < 10)\n - [intersection-observer](https://github.com/w3c/IntersectionObserver/tree/master/polyfill) - IntersectionObserver (only in browsers)\n\n## Only browser shims\n\nIf you only want to bring in the browser shims and not the JS language shims\n(from `airbnb-js-shims`), you can import `airbnb-browser-shims/browser-only`. If\nyou choose this route, you will want to be sure that you are properly bringing\nin the language shims for the browsers you support somehow. For example:\n\n```js\nimport 'airbnb-js-shims/target/es2015';\nimport 'airbnb-browser-shims/browser-only';\n```\n\n[1]: https://npmjs.org/package/airbnb-browser-shims\n[2]: http://versionbadg.es/airbnb/browser-shims.svg\n",
+    "licenseText": "MIT License\n\nCopyright (c) 2016 Airbnb\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/airbnb-browser-shims/-/airbnb-browser-shims-3.3.0.tgz#ff71c66b7d07d6e0f4e90c971cd47e3165292868",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/airbnb-browser-shims/-/airbnb-browser-shims-3.3.0.tgz",
+    "hash": "ff71c66b7d07d6e0f4e90c971cd47e3165292868",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "ff71c66b7d07d6e0f4e90c971cd47e3165292868"
+}

@@ -1,0 +1,60 @@
+{
+  "manifest": {
+    "name": "varname",
+    "version": "2.0.2",
+    "description": "Convert strings between different variable naming formats",
+    "keywords": [
+      "camelcase",
+      "camelback",
+      "naming",
+      "string",
+      "variable"
+    ],
+    "author": {
+      "name": "Rowan Manning",
+      "url": "http://rowanmanning.co.uk/"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/rowanmanning/varname.git"
+    },
+    "homepage": "https://github.com/rowanmanning/varname",
+    "bugs": {
+      "url": "https://github.com/rowanmanning/varname/issues"
+    },
+    "license": "MIT",
+    "engines": {
+      "node": ">=0.10"
+    },
+    "devDependencies": {
+      "browserify": "^11",
+      "istanbul": "~0.3",
+      "jscs": "^2",
+      "jshint": "^2",
+      "mocha": "^2",
+      "mockery": "~1.4",
+      "proclaim": "^3",
+      "sinon": "^1",
+      "uglify-js": "^2"
+    },
+    "main": "./lib/varname.js",
+    "scripts": {
+      "test": "make ci"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-varname-2.0.2-df7969952b882f6d011f85029e13b2c83e721158/package.json",
+    "readmeFilename": "README.md",
+    "readme": "\nVarname\n=======\n\nConvert strings between different variable naming formats.\n\n[![NPM version][shield-npm]][info-npm]\n[![Node.js version support][shield-node]][info-node]\n[![Build status][shield-build]][info-build]\n[![Code coverage][shield-coverage]][info-coverage]\n[![MIT licensed][shield-license]][info-license]\n\n\nGetting Started\n---------------\n\nYou can use Varname on the server side with [Node.js][node] and npm:\n\n```sh\nnpm install varname\n```\n\nOn the client side, you can include the built version of Varname in your page (found in [build/varname.js](build/varname.js)):\n\n```html\n<script src=\"varname.js\"></script>\n```\n\n\nUsage\n-----\n\nIn Node.js you can include Varname in your script by using require:\n\n```js\nvar varname = require('varname');\n```\n\nIf you're just including with a `<script>`, `varname` is available as a global variable.\n\n\n### varname.camelback( name )\n\nConvert a variable name to camelBack format (capitalize the first letter of all but the first word).  \n**name:** *(string)* The variable name to convert.  \n**return:** *(string)* Returns the converted variable name.\n\n```js\nvarname.camelback('foo_bar_baz'); // 'fooBarBaz'\n```\n\n\n### varname.camelcase( name )\n\nConvert a variable name to CamelCase format (capitalize the first letter of each word).  \n**name:** *(string)* The variable name to convert.  \n**return:** *(string)* Returns the converted variable name.\n\n```js\nvarname.camelcase('foo_bar_baz'); // 'FooBarBaz'\n```\n\n\n### varname.dash( name )\n\nConvert a variable name to dash format.  \n**name:** *(string)* The variable name to convert.  \n**return:** *(string)* Returns the converted variable name.\n\n```js\nvarname.dash('FooBarBaz'); // 'foo-bar-baz'\n```\n\n\n### varname.underscore( name )\n\nConvert a variable name to underscore format.  \n**name:** *(string)* The variable name to convert.  \n**return:** *(string)* Returns the converted variable name.\n\n```js\nvarname.underscore('FooBarBaz'); // 'foo_bar_baz'\n```\n\n\n### varname.split( name )\n\nSplit a string into separate variable parts. This allows you to write your own format converters easily.\n**name:** *(string)* The variable name to split.  \n**return:** *(array)* Returns an array of parts.\n\n```js\nvarname.split('fooBarBaz');\nvarname.split('FooBarBaz');\nvarname.split('FOOBarBAZ');\nvarname.split('foo-bar-baz');\nvarname.split('foo_bar_baz');\nvarname.split('♥~foo|bar|baz~♥');\n// all return ['foo', 'bar', 'baz']\n```\n\n\nBrowser Support\n---------------\n\nVarname is officially supported in the following browsers:\n\n  - Android Browser 2.2+\n  - Edge 0.11+\n  - Firefox 4+\n  - Google Chrome 14+\n  - Internet Explorer 6+\n  - Safari 5+\n  - Safari iOS 4+\n\n\nContributing\n------------\n\nTo contribute to Varname, clone this repo locally and commit your code on a separate branch.\n\nIf you're making core library changes please write unit tests for your code, and check that everything works by running the following before opening a pull-request:\n\n```sh\nmake ci\n```\n\n\nLicense\n-------\n\nVarname is licensed under the [MIT][info-license] license.  \nCopyright &copy; 2015, Rowan Manning\n\n\n\n[make]: http://gnuwin32.sourceforge.net/packages/make.htm\n[node]: http://nodejs.org/\n\n[info-coverage]: https://coveralls.io/github/rowanmanning/varname\n[info-license]: LICENSE\n[info-node]: package.json\n[info-npm]: https://www.npmjs.com/package/varname\n[info-build]: https://travis-ci.org/rowanmanning/varname\n[shield-coverage]: https://img.shields.io/coveralls/rowanmanning/varname.svg\n[shield-license]: https://img.shields.io/badge/license-MIT-blue.svg\n[shield-node]: https://img.shields.io/badge/node.js%20support-0.10–6-brightgreen.svg\n[shield-npm]: https://img.shields.io/npm/v/varname.svg\n[shield-build]: https://img.shields.io/travis/rowanmanning/varname/master.svg\n",
+    "licenseText": "\nCopyright (c) 2013 Rowan Manning\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/varname/-/varname-2.0.2.tgz#df7969952b882f6d011f85029e13b2c83e721158",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/varname/-/varname-2.0.2.tgz",
+    "hash": "df7969952b882f6d011f85029e13b2c83e721158",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "df7969952b882f6d011f85029e13b2c83e721158"
+}

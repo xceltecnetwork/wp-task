@@ -1,0 +1,64 @@
+{
+  "manifest": {
+    "name": "browser-sync-webpack-plugin",
+    "version": "2.2.2",
+    "description": "BrowserSync and Webpack integration",
+    "keywords": [
+      "webpack",
+      "webpack-plugin",
+      "browsersync",
+      "browser-sync",
+      "livereload",
+      "serve"
+    ],
+    "main": "index.js",
+    "dependencies": {
+      "lodash": "^4"
+    },
+    "devDependencies": {
+      "husky": "^0.15.0-rc.9",
+      "lint-staged": "^7.0.0",
+      "standard": "^11.0.1"
+    },
+    "peerDependencies": {
+      "browser-sync": "^2",
+      "webpack": "^1 || ^2 || ^3 || ^4"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Va1/browser-sync-webpack-plugin.git"
+    },
+    "homepage": "https://github.com/Va1/browser-sync-webpack-plugin",
+    "author": {
+      "name": "Valentyn Barmashyn",
+      "email": "barmashyn.val@gmail.com"
+    },
+    "license": "MIT",
+    "private": false,
+    "lint-staged": {
+      "lib/**/*.js": [
+        "standard --fix",
+        "git add"
+      ]
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-browser-sync-webpack-plugin-2.2.2-46092da62ff36354a50bf0e2903e78a6974fea54/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# [BrowserSync](https://browsersync.io/) plugin for [Webpack](https://webpack.js.org/)\n\nEasily use BrowserSync in your Webpack project.\n\n## Install:\n\n```bash\n$ npm install --save-dev browser-sync-webpack-plugin\n```\nor\n```bash\n$ yarn add --dev browser-sync-webpack-plugin\n```\n\nWith release of 2.0.0 the plugin is expected to be used in Node v4+ environment.\nSupport for Node v3 and lower was dropped, but you can install and use the plugin version of 1.2.0 in older environments.\n\n## Usage:\n\nBrowserSync will start only when you run Webpack in [watch mode](http://webpack.github.io/docs/tutorials/getting-started/#watch-mode):\n\n```bash\n$ webpack --watch\n```\n\n### Basic:\n\nIf you're not using Webpack Dev Server, you can make BrowserSync to serve your project.\nThe setup is pretty easy: just pass the [BrowserSync options](http://www.browsersync.io/docs/options/) to the plugin as the first argument.\n\nIn your `webpack.config.js`:\n\n```javascript\nconst BrowserSyncPlugin = require('browser-sync-webpack-plugin')\n\nmodule.exports = {\n  // ...\n  plugins: [\n    new BrowserSyncPlugin({\n      // browse to http://localhost:3000/ during development,\n      // ./public directory is being served\n      host: 'localhost',\n      port: 3000,\n      server: { baseDir: ['public'] }\n    })\n  ]\n}\n```\n\n### Advanced:\n\nThe advanced usage is about using [Webpack Dev Server](https://github.com/webpack/webpack-dev-server) with BrowserSync in order to use awesome features of both.\n\nTo achieve this, BrowserSync offers the [proxy](http://www.browsersync.io/docs/options/#option-proxy) option.\nSo, basically, you are about to proxy the output from the Webpack Dev Server through BrowserSync to get the best out of both.\n\nIn your `webpack.config.js`:\n\n```javascript\nconst BrowserSyncPlugin = require('browser-sync-webpack-plugin')\n\nmodule.exports = {\n  // ...\n  plugins: [\n    new BrowserSyncPlugin(\n      // BrowserSync options\n      {\n        // browse to http://localhost:3000/ during development\n        host: 'localhost',\n        port: 3000,\n        // proxy the Webpack Dev Server endpoint\n        // (which should be serving on http://localhost:3100/)\n        // through BrowserSync\n        proxy: 'http://localhost:3100/'\n      },\n      // plugin options\n      {\n        // prevent BrowserSync from reloading the page\n        // and let Webpack Dev Server take care of this\n        reload: false\n      }\n    )\n  ]\n}\n```\n\n---\n\nOther supported plugin options are:\n\n* `name` - default: `bs-webpack-plugin`, BrowserSync [instance name](http://www.browsersync.io/docs/api/#api-name)\n* `callback` - default: `undefined`, BrowserSync [instance init callback](http://www.browsersync.io/docs/api/#api-cb).\n* `injectCss` - default: `false`, allows BrowserSync to inject changes inplace instead of reloading the page when changed chunks are all CSS files\n\n## Contributing:\n\nFeel free to open issues to propose stuff and participate. Pull requests are also welcome.\n\n## Licence:\n\n[MIT](http://en.wikipedia.org/wiki/MIT_License)\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/browser-sync-webpack-plugin/-/browser-sync-webpack-plugin-2.2.2.tgz#46092da62ff36354a50bf0e2903e78a6974fea54",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/browser-sync-webpack-plugin/-/browser-sync-webpack-plugin-2.2.2.tgz",
+    "hash": "46092da62ff36354a50bf0e2903e78a6974fea54",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "46092da62ff36354a50bf0e2903e78a6974fea54"
+}

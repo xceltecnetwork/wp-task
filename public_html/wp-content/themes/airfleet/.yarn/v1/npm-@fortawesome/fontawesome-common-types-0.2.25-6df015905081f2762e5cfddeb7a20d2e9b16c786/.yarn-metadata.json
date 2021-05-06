@@ -1,0 +1,71 @@
+{
+  "manifest": {
+    "description": "The iconic font, CSS, and SVG framework",
+    "keywords": [
+      "font",
+      "awesome",
+      "fontawesome",
+      "icon",
+      "svg",
+      "bootstrap"
+    ],
+    "homepage": "https://fontawesome.com/",
+    "bugs": {
+      "url": "http://github.com/FortAwesome/Font-Awesome/issues"
+    },
+    "author": {
+      "name": "Dave Gandy",
+      "email": "dave@fontawesome.com",
+      "url": "http://twitter.com/davegandy"
+    },
+    "contributors": [
+      {
+        "name": "Brian Talbot",
+        "url": "http://twitter.com/talbs"
+      },
+      {
+        "name": "Travis Chase",
+        "url": "http://twitter.com/supercodepoet"
+      },
+      {
+        "name": "Rob Madole",
+        "url": "http://twitter.com/robmadole"
+      },
+      {
+        "name": "Geremia Taglialatela",
+        "url": "http://twitter.com/gtagliala"
+      },
+      {
+        "name": "Mike Wilkerson",
+        "url": "http://twitter.com/mw77"
+      }
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/FortAwesome/Font-Awesome"
+    },
+    "engines": {
+      "node": ">=6"
+    },
+    "dependencies": {},
+    "version": "0.2.25",
+    "name": "@fortawesome/fontawesome-common-types",
+    "license": "MIT",
+    "types": "./index.d.ts",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-@fortawesome/fontawesome-common-types-0.2.25-6df015905081f2762e5cfddeb7a20d2e9b16c786/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# @fortawesome/fontawesome-common-types - SVG with JavaScript\n\n> \"I came here to chew bubblegum and install Font Awesome 5 - and I'm all out of bubblegum\"\n\n[![npm](https://img.shields.io/npm/v/@fortawesome/fontawesome-common-types.svg?style=flat-square)](https://www.npmjs.com/package/@fortawesome/fontawesome-common-types)\n\n## What is this package?\n\nFont Awesome 5 JavaScript packages support TypeScript. This package abstracts out some of the common definitions that those packages use.\n\n## Here be dragons\n\nIf you are trying to import types from this package we *highly* recommend you do the following instead as *all types in this package are re-exported to the main fontawesome package*.\n\nyour.ts\n\n```\nimport {\n  IconName\n} from `@fortawesome/fontawesome-svg-core`\n\nconst myIcon: IconName = \"...\"\n```\n\n## Issues and support\n\nStart with [GitHub issues](https://github.com/FortAwesome/Font-Awesome/issues) and ping us on [Twitter](https://twitter.com/fontawesome) if you need to.\n",
+    "licenseText": "Font Awesome Pro License\n------------------------\n\nFont Awesome Pro is commercial software that requires a paid license. Full\nFont Awesome Pro license: https://fontawesome.com/license.\n\n# Commercial License\nThe Font Awesome Pro commercial license allows you to pay for FA Pro once, own\nit, and use it just about everywhere you'd like.\n\n# Attribution\nAttribution is not required by the Font Awesome Pro commercial license.\n\n# Brand Icons\nAll brand icons are trademarks of their respective owners. The use of these\ntrademarks does not indicate endorsement of the trademark holder by Font\nAwesome, nor vice versa. **Please do not use brand logos for any purpose except\nto represent the company, product, or service to which they refer.**\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.25.tgz#6df015905081f2762e5cfddeb7a20d2e9b16c786",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.25.tgz",
+    "hash": "6df015905081f2762e5cfddeb7a20d2e9b16c786",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "6df015905081f2762e5cfddeb7a20d2e9b16c786"
+}

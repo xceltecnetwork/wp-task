@@ -1,0 +1,82 @@
+{
+  "manifest": {
+    "name": "pngquant-bin",
+    "version": "5.0.2",
+    "description": "`pngquant` wrapper that makes it seamlessly available as a local dependency",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/imagemin/pngquant-bin.git"
+    },
+    "author": {
+      "name": "Kevin Mårtensson",
+      "email": "kevinmartensson@gmail.com",
+      "url": "github.com/kevva"
+    },
+    "maintainers": [
+      {
+        "name": "Sindre Sorhus",
+        "email": "sindresorhus@gmail.com",
+        "url": "sindresorhus.com"
+      },
+      {
+        "name": "Shinnosuke Watanabe",
+        "url": "github.com/shinnn"
+      }
+    ],
+    "bin": {
+      "pngquant": "cli.js"
+    },
+    "engines": {
+      "node": ">=6"
+    },
+    "scripts": {
+      "postinstall": "node lib/install.js",
+      "test": "xo && ava"
+    },
+    "files": [
+      "cli.js",
+      "index.js",
+      "lib",
+      "vendor/source"
+    ],
+    "keywords": [
+      "imagemin",
+      "compress",
+      "image",
+      "img",
+      "minify",
+      "optimize",
+      "png",
+      "pngquant"
+    ],
+    "dependencies": {
+      "bin-build": "^3.0.0",
+      "bin-wrapper": "^4.0.1",
+      "execa": "^0.10.0",
+      "logalot": "^2.0.0"
+    },
+    "devDependencies": {
+      "ava": "*",
+      "bin-check": "^4.0.1",
+      "compare-size": "^3.0.0",
+      "tempy": "^0.2.1",
+      "xo": "*"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-pngquant-bin-5.0.2-6f34f3e89c9722a72bbc509062b40f1b17cda460/package.json",
+    "readmeFilename": "readme.md",
+    "readme": "# pngquant-bin [![Build Status](https://travis-ci.org/imagemin/pngquant-bin.svg?branch=master)](https://travis-ci.org/imagemin/pngquant-bin)\n\n> [`pngquant`](https://github.com/pornel/pngquant) is a PNG compressor that significantly reduces file sizes by converting images to a more efficient 8-bit PNG format\n\nYou probably want [`imagemin-pngquant`](https://github.com/imagemin/imagemin-pngquant) instead.\n\n\n## Install\n\n```\n$ npm install pngquant-bin\n```\n\n\n## Usage\n\n```js\nconst execFile = require('child_process').execFile;\nconst pngquant = require('pngquant-bin');\n\nexecFile(pngquant, ['-o', 'output.png', 'input.png'], err => {\n\tconsole.log('Image minified!');\n});\n```\n\n\n## CLI\n\n```\n$ npm install --global pngquant-bin\n```\n\n```\n$ pngquant --help\n```\n\n\n## Updating pre-compiled binaries\n\nThe Linux binaries are statically linked so they should work on all Linux distributions. To recompile them:\n\n1. `sudo apt-get install libpng-dev`\n2. `./configure CFLAGS=-static && make && cp pngquant pngquant-64`\n3. Repeat the above commands, but in a 32-bin docker container started with: docker run -ti -v `pwd`:/source i386/debian:9.3 bash\n\n\n## License\n\nMIT © [Imagemin](https://github.com/imagemin)\n",
+    "licenseText": "MIT License\n\nCopyright (c) Imagemin (github.com/imagemin)\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/pngquant-bin/-/pngquant-bin-5.0.2.tgz#6f34f3e89c9722a72bbc509062b40f1b17cda460",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/pngquant-bin/-/pngquant-bin-5.0.2.tgz",
+    "hash": "6f34f3e89c9722a72bbc509062b40f1b17cda460",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "6f34f3e89c9722a72bbc509062b40f1b17cda460"
+}

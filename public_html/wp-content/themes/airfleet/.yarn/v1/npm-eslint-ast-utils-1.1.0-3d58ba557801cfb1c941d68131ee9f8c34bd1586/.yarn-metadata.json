@@ -1,0 +1,73 @@
+{
+  "manifest": {
+    "name": "eslint-ast-utils",
+    "version": "1.1.0",
+    "description": "Utility library to manipulate ASTs",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jfmengels/eslint-ast-utils.git"
+    },
+    "author": {
+      "name": "Jeroen Engels",
+      "email": "jfm.engels@gmail.com",
+      "url": "github.com/jfmengels"
+    },
+    "engines": {
+      "node": ">=4"
+    },
+    "scripts": {
+      "test": "xo && nyc ava"
+    },
+    "files": [
+      "index.js",
+      "lib"
+    ],
+    "keywords": [
+      "eslint",
+      "ast",
+      "utils",
+      "Utility"
+    ],
+    "dependencies": {
+      "lodash.get": "^4.4.2",
+      "lodash.zip": "^4.2.0"
+    },
+    "devDependencies": {
+      "ava": "^0.16.0",
+      "babel-eslint": "^7.0.0",
+      "espree": "^3.3.2",
+      "nyc": "^7.1.0",
+      "xo": "^0.17.0"
+    },
+    "xo": {
+      "esnext": true
+    },
+    "nyc": {
+      "reporter": [
+        "lcov",
+        "text"
+      ],
+      "check-coverage": true,
+      "lines": 100,
+      "statements": 100,
+      "functions": 100,
+      "branches": 100
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-eslint-ast-utils-1.1.0-3d58ba557801cfb1c941d68131ee9f8c34bd1586/package.json",
+    "readmeFilename": "readme.md",
+    "readme": "# eslint-ast-utils [![Build Status](https://travis-ci.org/jfmengels/eslint-ast-utils.svg?branch=master)](https://travis-ci.org/jfmengels/eslint-ast-utils)\n\n> Utility library to manipulate ASTs for ESLint projects\n\n\n## Install\n\n```\n$ npm install --save eslint-ast-utils\n```\n\n## Usage\n\n```js\nconst astUtils = require('eslint-ast-utils');\n```\n\n\n## API\n\n### astUtils.isStaticRequire(node)\n\nChecks whether `node` is a call to CommonJS's `require` function.\n\nReturns `true` if and only if:\n- `node` is a `CallExpression`\n- `node`'s callee is an `Identifier` named `require`\n- `node` has exactly 1 `Literal` argument whose value is a `string`\n\nExample:\n```js\nrequire('lodash');\n// => true\nrequire(foo);\n// => false\nfoo('lodash');\n// => false\n```\n\nUsage example:\n```js\nfunction create(context) {\n\treturn {\n\t\tCallExpression(node) {\n\t\t\tif (astUtils.isStaticRequire(node)) {\n\t\t\t\tcontext.report({\n\t\t\t\t\tnode: node,\n\t\t\t\t\tmessage: 'Use import syntax rather than `require`'\n\t\t\t\t});\n\t\t\t}\n\t\t}\n\t};\n}\n```\n\n### astUtils.getRequireSource(node)\n\nGets the source of a `require()` call. If `node` is not a `require` call (in the definition of [`isStaticRequire`](#astutilsisstaticrequirenode)), it will return `undefined`.\n\nExample:\n```js\nrequire('lodash');\n// => 'lodash'\nrequire('./foo');\n// => './foo'\n```\n\nUsage example:\n```js\nfunction create(context) {\n\treturn {\n\t\tCallExpression(node) {\n\t\t\tif (astUtils.isStaticRequire(node) && astUtils.getRequireSource(node) === 'underscore') {\n\t\t\t\tcontext.report({\n\t\t\t\t\tnode: node,\n\t\t\t\t\tmessage: 'Use `lodash` instead of `underscore`'\n\t\t\t\t});\n\t\t\t}\n\t\t}\n\t};\n}\n```\n\n### astUtils.containsIdentifier(name, node)\n\nChecks if there is a reference to a variable named `name` inside of `node`.\n\nReturns true if and only if:\n- There is an `Identifier` named `name` inside of `node`\n- That `Identifier` is a variable (i.e. not a static property name for instance)\n- That `Identifier` does not reference a different variable named `name` introduced in a sub-scope of `node`.\n\nExample:\n```js\nfoo(a);\n// containsIdentifier('a', node) // => true\n// containsIdentifier('b', node) // => true\n\nfunction foo(fn) {\n\treturn function(a) {\n\t\treturn fn(a);\n\t};\n}\n// containsIdentifier('a', node) // => false\n```\n\nUsage example:\n```js\nfunction create(context) {\n\treturn {\n\t\tFunctionDeclaration(node) {\n\t\t\tnode.params.forEach(param => {\n\t\t\t\tif (param.type === 'Identifier' && !astUtils.containsIdentifier(param.name, node.body)) {\n\t\t\t\t\tcontext.report({\n\t\t\t\t\t\tnode: node,\n\t\t\t\t\t\tmessage: `${name} is never used`\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t});\n\t\t}\n\t};\n}\n```\n\n### astUtils.someContainIdentifier(name, nodes)\n\nChecks if there is a reference to a variable named `name` inside any node of the `nodes` array. Will return `false` if `nodes` is not an array.\nThis is a shorthand version of [`containsIdentifier`](#astutilscontainsidentifier) that works for arrays. The following are equivalent:\n\n```js\n[node1, node2, node3].some(node => astUtils.containsIdentifier('a', node));\n// equivalent to\nastUtils.someContainIdentifier('a', [node1, node2, node3]);\n```\n\n### astUtils.getPropertyName(node)\n\nGet the name of a `MemberExpression`'s property. Returns:\n- a `string` if the property is accessed through dot notation.\n- a `string` if the property is accessed through brackets and is a string.\n- a `number` if the property is accessed through brackets and is a number.\n- `undefined` if `node` is not a `MemberExpression`\n- `undefined` if the property name is a hard to compute expression.\n\nExample:\n```js\nfoo.bar\n// => 'bar'\nfoo['bar']\n// => 'bar'\nfoo[bar]\n// => undefined\nfoo[0]\n// => 0 # Number\nfoo[null]\n// => null\nfoo[undefined]\n// => undefined\n```\n\nUsage example:\n```js\nfunction create(context) {\n\treturn {\n\t\tMemberExpression(node) {\n\t\t\tif (astUtils.getPropertyName(node).startsWith('_')) {\n\t\t\t\tcontext.report({\n\t\t\t\t\tnode: node,\n\t\t\t\t\tmessage: 'Don\\'t access \"private\" fields'\n\t\t\t\t});\n\t\t\t}\n\t\t}\n\t};\n}\n```\n\n### astUtils.computeStaticExpression(node)\n\nGet the value of an expression that can be statically computed, i.e. without variables references or expressions too complex.\n\nReturns:\n- `undefined` if the value could not be statically computed.\n- An object with a `value` property containing the computed value.\n\nExample:\n```js\nfoo\n// => undefined\n42\n// => {value: 42}\n'foo'\n// => {value: 'foo'}\nundefined\n// => {value: undefined}\nnull\n// => {value: null}\n1 + 2 - 4 + (-1)\n// => {value: -2}\ntrue ? 1 : 2\n// => {value: 1}\n`foo ${'bar'}`\n// => {value: 'foo bar'}\n```\n\nUsage example:\n```js\nfunction create(context) {\n\treturn {\n\t\tTemplateLiteral(node) {\n\t\t\tconst expression = astUtils.computeStaticExpression(node);\n\t\t\tif (expression) {\n\t\t\t\tcontext.report({\n\t\t\t\t\tnode: node,\n\t\t\t\t\tmessage: `You can replace this template literal by the regular string '${expression.value}'.`\n\t\t\t\t});\n\t\t\t}\n\t\t}\n\t};\n}\n```\n\n### astUtils.isPromise(node)\n\nChecks whether `node` is a Promise.\n\nReturns `true` if and only if `node` is one of the following:\n- a call of an expression's `then` or `catch` properties\n- a call to a property of `Promise` (except `cancel`, `promisify`,  `promisifyAll` and `is`)\n- a call to `new Promise`\n\nIf `node` uses unknown properties of a value that would be considered a Promise, `node` itself would not be considered as a Promise.\n\nExample:\n```js\nfoo.then(fn);\n// => true\nfoo.catch(fn);\n// => true\nfoo.then(fn).catch(fn);\n// => true\nfoo.then(fn).isFulfilled(fn); // isFulfilled(fn) may not return a Promise\n// => false\n\nPromise.resolve(value);\n// => true\nPromise.reject(value);\n// => true\nPromise.race(promises);\n// => true\nPromise.all(promises);\n// => true\nPromise.map(promises, fn); // Bluebird method\n// => true\n\nnew Promise(fn);\n// => true\nnew Promise.resolve(value);\n// => false\n```\n\nUsage example:\n```js\nfunction create(context) {\n\tfunction reportIfPromise(node) {\n\t\tif (astUtils.isPromise(node)) {\n\t\t\tcontext.report({\n\t\t\t\tnode: node,\n\t\t\t\tmessage: 'Prefer using async/await'\n\t\t\t});\n\t\t}\n\t}\n\n\treturn {\n\t\tCallExpression: reportIfPromise,\n\t\tNewExpression: reportIfPromise\n\t};\n}\n```\n\n### astUtils.isFunctionExpression(node)\n\nChecks whether `node` is a function expression or an arrow function expression (not a function declaration).\n\nIf `node` uses unknown properties of a value that would be considered a Promise, `node` itself would not be considered as a Promise.\n\nExample:\n```js\n(function foo() {})\n// => true\n() => {}\n// => true\nfunction foo() {} // function declaration\n// => false\n```\n\nUsage example:\n```js\nfunction create(context) {\n\treturn {\n\t\tCallExpression(node) {\n\t\t\tif (node.callee.type === 'Identifier'\n\t\t\t\t&& node.callee.name === 'test'\n\t\t\t\t&& !astUtils.isFunctionExpression(node.arguments[0])\n\t\t\t\t&& !astUtils.isFunctionExpression(node.arguments[1])\n\t\t\t) {\n\t\t\t\tcontext.report({\n\t\t\t\t\tnode: node,\n\t\t\t\t\tmessage: 'You need to pass a function to test()'\n\t\t\t\t});\n\t\t\t}\n\t\t}\n\t};\n}\n```\n\n## License\n\nMIT © [Jeroen Engels](https://github.com/jfmengels)\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) Jeroen Engels <jfm.engels@gmail.com> (github.com/jfmengels)\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/eslint-ast-utils/-/eslint-ast-utils-1.1.0.tgz#3d58ba557801cfb1c941d68131ee9f8c34bd1586",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/eslint-ast-utils/-/eslint-ast-utils-1.1.0.tgz",
+    "hash": "3d58ba557801cfb1c941d68131ee9f8c34bd1586",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "3d58ba557801cfb1c941d68131ee9f8c34bd1586"
+}

@@ -1,0 +1,102 @@
+{
+  "manifest": {
+    "name": "unist-util-find-all-after",
+    "version": "1.0.3",
+    "description": "Utility to find nodes after another node",
+    "license": "MIT",
+    "keywords": [
+      "unist",
+      "node",
+      "find",
+      "after",
+      "util",
+      "utility"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/syntax-tree/unist-util-find-all-after.git"
+    },
+    "bugs": {
+      "url": "https://github.com/syntax-tree/unist-util-find-all-after/issues"
+    },
+    "author": {
+      "name": "Titus Wormer",
+      "email": "tituswormer@gmail.com",
+      "url": "https://wooorm.com"
+    },
+    "contributors": [
+      {
+        "name": "Titus Wormer",
+        "email": "tituswormer@gmail.com",
+        "url": "https://wooorm.com"
+      }
+    ],
+    "dependencies": {
+      "unist-util-is": "^2.0.0"
+    },
+    "devDependencies": {
+      "browserify": "^16.0.0",
+      "nyc": "^14.0.0",
+      "prettier": "^1.0.0",
+      "remark": "^10.0.0",
+      "remark-cli": "^6.0.0",
+      "remark-preset-wooorm": "^5.0.0",
+      "tape": "^4.0.0",
+      "tinyify": "^2.5.0",
+      "xo": "^0.24.0"
+    },
+    "scripts": {
+      "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
+      "build-bundle": "browserify . -s unistUtilFindAllAfter -o unist-util-find-all-after.js",
+      "build-mangle": "browserify . -s unistUtilFindAllAfter -p tinyify -o unist-util-find-all-after.min.js",
+      "build": "npm run build-bundle && npm run build-mangle",
+      "test-api": "node test",
+      "test-coverage": "nyc --reporter lcov tape test.js",
+      "test": "npm run format && npm run build && npm run test-coverage"
+    },
+    "nyc": {
+      "check-coverage": true,
+      "lines": 100,
+      "functions": 100,
+      "branches": 100
+    },
+    "prettier": {
+      "tabWidth": 2,
+      "useTabs": false,
+      "singleQuote": true,
+      "bracketSpacing": false,
+      "semi": false,
+      "trailingComma": "none"
+    },
+    "xo": {
+      "prettier": true,
+      "esnext": false,
+      "rules": {
+        "guard-for-in": "off"
+      },
+      "ignore": [
+        "unist-util-find-all-after.js"
+      ]
+    },
+    "remarkConfig": {
+      "plugins": [
+        "preset-wooorm"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-unist-util-find-all-after-1.0.3-5114041df272315a36d10b15f4bd199f9d2c3652/package.json",
+    "readmeFilename": "readme.md",
+    "readme": "# unist-util-find-all-after\n\n[![Build][build-badge]][build]\n[![Coverage][coverage-badge]][coverage]\n[![Downloads][downloads-badge]][downloads]\n[![Size][size-badge]][size]\n\n[**unist**][unist] utility to find nodes after another node.\n\n## Installation\n\n[npm][]:\n\n```bash\nnpm install unist-util-find-all-after\n```\n\n## Usage\n\n```js\nvar u = require('unist-builder')\nvar findAllAfter = require('unist-util-find-all-after')\n\nvar tree = u('tree', [\n  u('leaf', 'leaf 1'),\n  u('node', [u('leaf', 'leaf 2'), u('leaf', 'leaf 3')]),\n  u('leaf', 'leaf 4'),\n  u('node', [u('leaf', 'leaf 5')]),\n  u('leaf', 'leaf 6'),\n  u('void'),\n  u('leaf', 'leaf 7')\n])\n\nconsole.log(findAllAfter(tree, 1, 'leaf'))\n```\n\nYields:\n\n```js\n[\n  { type: 'leaf', value: 'leaf 4' },\n  { type: 'leaf', value: 'leaf 6' },\n  { type: 'leaf', value: 'leaf 7' }\n]\n```\n\n## API\n\n### `findAllAfter(parent, node|index[, test])`\n\nFind all children after `index` (or `node`) in `parent`, that passes `test`\n(when given).\n\n###### Parameters\n\n*   `parent` ([`Node`][node]) — [Parent][] node\n*   `node` ([`Node`][node]) — [Child][] of `parent`\n*   `index` (`number`, optional) — [Index][] in `parent`\n*   `test` (`Function`, `string`, `Object`, `Array`, optional)\n    — See [`unist-util-is`][is]\n\n###### Returns\n\n[`Array.<Node>`][node] — [Child][]ren of `parent` passing `test`.\n\n## Related\n\n*   [`unist-util-find-after`](https://github.com/syntax-tree/unist-util-find-after)\n    — Find a node after another node\n*   [`unist-util-find-before`](https://github.com/syntax-tree/unist-util-find-before)\n    — Find a node before another node\n*   [`unist-util-find-all-before`](https://github.com/syntax-tree/unist-util-find-all-before)\n    — Find all nodes before another node\n*   [`unist-util-find-all-between`](https://github.com/mrzmmr/unist-util-find-all-between)\n    — Find all nodes between two nodes\n*   [`unist-util-find`](https://github.com/blahah/unist-util-find)\n    — Find nodes matching a predicate\n\n## Contribute\n\nSee [`contributing.md` in `syntax-tree/.github`][contributing] for ways to get\nstarted.\nSee [`support.md`][support] for ways to get help.\n\nThis project has a [Code of Conduct][coc].\nBy interacting with this repository, organisation, or community you agree to\nabide by its terms.\n\n## License\n\n[MIT][license] © [Titus Wormer][author]\n\n<!-- Definitions -->\n\n[build-badge]: https://img.shields.io/travis/syntax-tree/unist-util-find-all-after.svg\n\n[build]: https://travis-ci.org/syntax-tree/unist-util-find-all-after\n\n[coverage-badge]: https://img.shields.io/codecov/c/github/syntax-tree/unist-util-find-all-after.svg\n\n[coverage]: https://codecov.io/github/syntax-tree/unist-util-find-all-after\n\n[downloads-badge]: https://img.shields.io/npm/dm/unist-util-find-all-after.svg\n\n[downloads]: https://www.npmjs.com/package/unist-util-find-all-after\n\n[size-badge]: https://img.shields.io/bundlephobia/minzip/unist-util-find-all-after.svg\n\n[size]: https://bundlephobia.com/result?p=unist-util-find-all-after\n\n[npm]: https://docs.npmjs.com/cli/install\n\n[license]: license\n\n[author]: https://wooorm.com\n\n[unist]: https://github.com/syntax-tree/unist\n\n[node]: https://github.com/syntax-tree/unist#node\n\n[parent]: https://github.com/syntax-tree/unist#parent-1\n\n[child]: https://github.com/syntax-tree/unist#child\n\n[index]: https://github.com/syntax-tree/unist#index\n\n[is]: https://github.com/syntax-tree/unist-util-is\n\n[contributing]: https://github.com/syntax-tree/.github/blob/master/contributing.md\n\n[support]: https://github.com/syntax-tree/.github/blob/master/support.md\n\n[coc]: https://github.com/syntax-tree/.github/blob/master/code-of-conduct.md\n",
+    "licenseText": "(The MIT License)\n\nCopyright (c) 2015 Titus Wormer <tituswormer@gmail.com>\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n'Software'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/unist-util-find-all-after/-/unist-util-find-all-after-1.0.3.tgz#5114041df272315a36d10b15f4bd199f9d2c3652",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/unist-util-find-all-after/-/unist-util-find-all-after-1.0.3.tgz",
+    "hash": "5114041df272315a36d10b15f4bd199f9d2c3652",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "5114041df272315a36d10b15f4bd199f9d2c3652"
+}

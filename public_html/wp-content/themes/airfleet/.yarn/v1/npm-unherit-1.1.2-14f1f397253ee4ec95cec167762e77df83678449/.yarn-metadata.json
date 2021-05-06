@@ -1,0 +1,97 @@
+{
+  "manifest": {
+    "name": "unherit",
+    "version": "1.1.2",
+    "description": "Clone a constructor without affecting the super-class",
+    "license": "MIT",
+    "keywords": [
+      "clone",
+      "super",
+      "class",
+      "constructor"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/wooorm/unherit.git"
+    },
+    "bugs": {
+      "url": "https://github.com/wooorm/unherit/issues"
+    },
+    "author": {
+      "name": "Titus Wormer",
+      "email": "tituswormer@gmail.com",
+      "url": "https://wooorm.com"
+    },
+    "contributors": [
+      {
+        "name": "Titus Wormer",
+        "email": "tituswormer@gmail.com",
+        "url": "https://wooorm.com"
+      }
+    ],
+    "files": [
+      "index.js"
+    ],
+    "dependencies": {
+      "inherits": "^2.0.1",
+      "xtend": "^4.0.1"
+    },
+    "devDependencies": {
+      "browserify": "^16.0.0",
+      "nyc": "^14.0.0",
+      "prettier": "^1.12.1",
+      "remark-cli": "^6.0.0",
+      "remark-preset-wooorm": "^4.0.0",
+      "tape": "^4.0.0",
+      "tinyify": "^2.5.0",
+      "xo": "^0.24.0"
+    },
+    "scripts": {
+      "format": "remark . -qfo && prettier --write \"**/*.js\" && xo --fix",
+      "build-bundle": "browserify . -s unherit -o unherit.js",
+      "build-mangle": "browserify . -s unherit -p tinyify -o unherit.min.js",
+      "build": "npm run build-bundle && npm run build-mangle",
+      "test-api": "node test",
+      "test-coverage": "nyc --reporter lcov tape test.js",
+      "test": "npm run format && npm run build && npm run test-coverage"
+    },
+    "prettier": {
+      "tabWidth": 2,
+      "useTabs": false,
+      "singleQuote": true,
+      "bracketSpacing": false,
+      "semi": false,
+      "trailingComma": "none"
+    },
+    "xo": {
+      "prettier": true,
+      "esnext": false,
+      "rules": {
+        "guard-for-in": "off"
+      },
+      "ignores": [
+        "unherit.js"
+      ]
+    },
+    "remarkConfig": {
+      "plugins": [
+        "preset-wooorm"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-unherit-1.1.2-14f1f397253ee4ec95cec167762e77df83678449/package.json",
+    "readmeFilename": "readme.md",
+    "readme": "# unherit\n\n[![Build][build-badge]][build]\n[![Coverage][coverage-badge]][coverage]\n[![Downloads][downloads-badge]][downloads]\n[![Size][size-badge]][size]\n\nCreate a custom constructor which can be modified without affecting the\noriginal class.\n\n## Installation\n\n[npm][npm-install]:\n\n```bash\nnpm install unherit\n```\n\n## Usage\n\n```js\nvar EventEmitter = require('events').EventEmitter\nvar unherit = require('unherit')\n\n// Create a private class which acts just like `EventEmitter`.\nvar Emitter = unherit(EventEmitter)\n\nEmitter.prototype.defaultMaxListeners = 0\n// Now, all instances of `Emitter` have no maximum listeners, without affecting\n// other `EventEmitter`s.\n\nnew Emitter().defaultMaxListeners === 0 // => true\nnew EventEmitter().defaultMaxListeners === undefined // => true\nnew Emitter() instanceof EventEmitter // => true\n```\n\n## API\n\n### `unherit(Super)`\n\nCreate a custom constructor which can be modified without affecting the\noriginal class.\n\n###### Parameters\n\n*   `Super` (`Function`) — Super-class.\n\n###### Returns\n\n`Function` — Constructor acting like `Super`, which can be modified\nwithout affecting the original class.\n\n## License\n\n[MIT][license] © [Titus Wormer][author]\n\n<!-- Definitions -->\n\n[build-badge]: https://img.shields.io/travis/wooorm/unherit.svg\n\n[build]: https://travis-ci.org/wooorm/unherit\n\n[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/unherit.svg\n\n[coverage]: https://codecov.io/github/wooorm/unherit\n\n[downloads-badge]: https://img.shields.io/npm/dm/unherit.svg\n\n[downloads]: https://www.npmjs.com/package/unherit\n\n[size-badge]: https://img.shields.io/bundlephobia/minzip/unherit.svg\n\n[size]: https://bundlephobia.com/result?p=unherit\n\n[npm-install]: https://docs.npmjs.com/cli/install\n\n[license]: license\n\n[author]: https://wooorm.com\n",
+    "licenseText": "(The MIT License)\n\nCopyright (c) 2015 Titus Wormer <tituswormer@gmail.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/unherit/-/unherit-1.1.2.tgz#14f1f397253ee4ec95cec167762e77df83678449",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/unherit/-/unherit-1.1.2.tgz",
+    "hash": "14f1f397253ee4ec95cec167762e77df83678449",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "14f1f397253ee4ec95cec167762e77df83678449"
+}

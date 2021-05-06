@@ -1,0 +1,58 @@
+{
+  "manifest": {
+    "name": "eslint-template-visitor",
+    "version": "1.1.0",
+    "main": "index.js",
+    "license": "GPL-3.0-or-later OR MIT",
+    "peerDependencies": {
+      "eslint": "^6.4.0"
+    },
+    "devDependencies": {
+      "ava": "^2.4.0",
+      "coveralls": "^3.0.6",
+      "eslint": "^6.4.0",
+      "eslint-ava-rule-tester": "^3.0.0",
+      "eslint-config-xo-overrides": "^1.4.0",
+      "esrecurse": "^4.2.1",
+      "nyc": "^14.1.1",
+      "ramda": "^0.26.1",
+      "reserved-words": "^0.1.2",
+      "seedrandom": "^3.0.5",
+      "shift-codegen": "^6.0.0",
+      "shift-fuzzer": "^1.0.2",
+      "shift-parser": "^7.0.0",
+      "shift-reducer": "^6.0.0",
+      "shift-scope": "^4.0.0",
+      "sinon": "^7.5.0",
+      "xo": "^0.24.0"
+    },
+    "dependencies": {
+      "eslint-visitor-keys": "^1.1.0",
+      "espree": "^6.1.1",
+      "multimap": "^1.0.2"
+    },
+    "xo": {
+      "extends": [
+        "eslint-config-xo-overrides"
+      ]
+    },
+    "scripts": {
+      "test": "xo && nyc ava --verbose"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-eslint-template-visitor-1.1.0-f090d124d1a52e05552149fc50468ed59608b166/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# ESLint Template Visitor\n[![Build Status](https://travis-ci.org/futpib/eslint-template-visitor.svg?branch=master)](https://travis-ci.org/futpib/eslint-template-visitor) [![Coverage Status](https://coveralls.io/repos/github/futpib/eslint-template-visitor/badge.svg?branch=master)](https://coveralls.io/github/futpib/eslint-template-visitor?branch=master)\n\nSimplify eslint rules by visiting templates\n\n## Install\n\n```\nnpm install eslint-template-visitor\n\n# or\n\nyarn add eslint-template-visitor\n```\n\n## Showcase\n\n```diff\n+const eslintTemplateVisitor = require('eslint-template-visitor');\n+\n+const templates = eslintTemplateVisitor();\n+\n+const objectVariable = templates.variable();\n+const argumentsVariable = templates.spreadVariable();\n+\n+const substrCallTemplate = templates.template`${objectVariable}.substr(${argumentsVariable})`;\n\n const create = context => {\n \tconst sourceCode = context.getSourceCode();\n\n-\treturn {\n-\t\tCallExpression(node) {\n-\t\t\tif (node.callee.type !== 'MemberExpression'\n-\t\t\t\t|| node.callee.property.type !== 'Identifier'\n-\t\t\t\t|| node.callee.property.name !== 'substr'\n-\t\t\t) {\n-\t\t\t\treturn;\n-\t\t\t}\n-\n-\t\t\tconst objectNode = node.callee.object;\n+\treturn templates.visitor({\n+\t\t[substrCallTemplate](node) {\n+\t\t\tconst objectNode = substrCallTemplate.context.getMatch(objectVariable);\n+\t\t\tconst argumentNodes = substrCallTemplate.context.getMatch(argumentsVariable);\n\n \t\t\tconst problem = {\n \t\t\t\tnode,\n \t\t\t\tmessage: 'Prefer `String#slice()` over `String#substr()`.',\n \t\t\t};\n\n-\t\t\tconst canFix = node.arguments.length === 0;\n+\t\t\tconst canFix = argumentNodes.length === 0;\n\n \t\t\tif (canFix) {\n \t\t\t\tproblem.fix = fixer => fixer.replaceText(node, sourceCode.getText(objectNode) + '.slice()');\n \t\t\t}\n\n \t\t\tcontext.report(problem);\n \t\t},\n-\t};\n+\t});\n };\n```\n\nSee [examples](https://github.com/futpib/eslint-template-visitor/tree/master/examples) for more.\n\n## API\n\n### `eslintTemplateVisitor(options?)`\n\nCraete a template visitor.\n\nExample:\n\n```js\nconst eslintTemplateVisitor = require('eslint-template-visitor');\n\nconst templates = eslintTemplateVisitor();\n```\n\n#### `options`\n\nType: `object`\n\n##### `parserOptions`\n\nOptions for the template parser. Passed down to [`espree`](https://github.com/eslint/espree#usage).\n\nExample:\n\n```js\nconst templates = eslintTemplateVisitor({\n\tparserOptions: {\n\t\tecmaVersion: 2018,\n\t},\n});\n```\n\n### `templates.variable()`\n\nCreate a variable to be used in a template. Such a variable can match exactly one AST node.\n\n### `templates.spreadVariable()`\n\nCreate a spread variable. Spread variable can match an array of AST nodes.\n\nThis is useful for matching a number of arguments in a call or a number of statements in a block.\n\n### `templates.template` tag\n\nCreates a template possibly containing variables.\n\nExample:\n\n```js\nconst objectVariable = templates.variable();\nconst argumentsVariable = templates.spreadVariable();\n\nconst substrCallTemplate = templates.template`${objectVariable}.substr(${argumentsVariable})`;\n\nconst create = () => templates.visitor({\n\t[substrCallTemplate](node) {\n\t\t// `node` here is the matching `.substr` call (i.e. `CallExpression`)\n\t}\n});\n```\n\n### `templates.visitor({ /* visitors */ })`\n\nUsed to merge template visitors with [common ESLint visitors](https://eslint.org/docs/developer-guide/selectors#listening-for-selectors-in-rules).\n\nExample:\n\n```js\nconst create = () => templates.visitor({\n\t[substrCallTemplate](node) {\n\t\t// Template visitor\n\t},\n\n\tFunctionDeclaration(node) {\n\t\t// Simple node type visitor\n\t},\n\n\t'IfStatement > BlockStatement'(node) {\n\t\t// ESLint selector visitor\n\t},\n});\n```\n\n### `template.context`\n\nA template match context. This property is defined only within a visitor call (in other words, only when working on a matching node).\n\nExample:\n\n```js\nconst create = () => templates.visitor({\n\t[substrCallTemplate](node) {\n\t\t// `substrCallTemplate.context` can be used here\n\t},\n\n\tFunctionDeclaration(node) {\n\t\t// `substrCallTemplate.context` is not defined here, and it does not make sense to use it here,\n\t\t// since we `substrCallTemplate` did not match an AST node.\n\t},\n});\n```\n\n#### `template.context.getMatch(variable)`\n\nUsed to get a match for a variable.\n\nExample:\n\n```js\nconst objectVariable = templates.variable();\nconst argumentsVariable = templates.spreadVariable();\n\nconst substrCallTemplate = templates.template`${objectVariable}.substr(${argumentsVariable})`;\n\nconst create = () => templates.visitor({\n\t[substrCallTemplate](node) {\n\t\tconst objectNode = substrCallTemplate.context.getMatch(objectVariable);\n\n\t\t// For example, let's check if `objectNode` is an `Identifier`: `objectNode.type === 'Identifier'`\n\n\t\tconst argumentNodes = substrCallTemplate.context.getMatch(argumentsVariable);\n\n\t\t// `Array.isArray(argumentNodes) === true`\n\t},\n});\n```\n",
+    "description": "[![Build Status](https://travis-ci.org/futpib/eslint-template-visitor.svg?branch=master)](https://travis-ci.org/futpib/eslint-template-visitor) [![Coverage Status](https://coveralls.io/repos/github/futpib/eslint-template-visitor/badge.svg?branch=master)](https://coveralls.io/github/futpib/eslint-template-visitor?branch=master)"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/eslint-template-visitor/-/eslint-template-visitor-1.1.0.tgz#f090d124d1a52e05552149fc50468ed59608b166",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/eslint-template-visitor/-/eslint-template-visitor-1.1.0.tgz",
+    "hash": "f090d124d1a52e05552149fc50468ed59608b166",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "f090d124d1a52e05552149fc50468ed59608b166"
+}

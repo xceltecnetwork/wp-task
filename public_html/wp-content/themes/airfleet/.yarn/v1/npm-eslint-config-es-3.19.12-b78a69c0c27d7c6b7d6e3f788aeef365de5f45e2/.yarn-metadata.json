@@ -1,0 +1,80 @@
+{
+  "manifest": {
+    "name": "eslint-config-es",
+    "version": "3.19.12",
+    "description": "eslint-config-es contains a strict ESLint configuration for ES2015+ and TypeScript.",
+    "contributors": [
+      {
+        "name": "Golo Roden",
+        "email": "golo.roden@thenativeweb.io"
+      },
+      {
+        "name": "Matthias Wagler",
+        "email": "matthias.wagler@thenativeweb.io"
+      },
+      {
+        "name": "Stefan Heine",
+        "email": "stefan.heine@microfocus.com"
+      },
+      {
+        "name": "Jan-Hendrik Grundhöfer",
+        "email": "jan-hendrik.grundhoefer@thenativeweb.io"
+      },
+      {
+        "name": "Hannes Leutloff",
+        "email": "hannes.leutloff@thenativeweb.io"
+      }
+    ],
+    "main": "node.js",
+    "dependencies": {
+      "@typescript-eslint/eslint-plugin": "2.15.0",
+      "@typescript-eslint/parser": "2.15.0",
+      "eslint-plugin-extended": "0.2.0",
+      "eslint-plugin-mocha": "6.2.2",
+      "eslint-plugin-react": "7.17.0",
+      "eslint-plugin-unicorn": "15.0.1"
+    },
+    "devDependencies": {
+      "eslint": "6.8.0",
+      "react": "16.12.0",
+      "semantic-release-configuration": "1.0.7",
+      "typescript": "3.7.4"
+    },
+    "scripts": {
+      "analyse": "npx eslint --config node.js *.js lib/**/*.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/thenativeweb/eslint-config-es.git"
+    },
+    "keywords": [
+      "ecmascript",
+      "es6",
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2018",
+      "es2019",
+      "es2020",
+      "eslint",
+      "eslint-config",
+      "typescript"
+    ],
+    "license": "MIT",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-eslint-config-es-3.19.12-b78a69c0c27d7c6b7d6e3f788aeef365de5f45e2/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# eslint-config-es\n\neslint-config-es contains a strict ESLint configuration for ES2015+ and TypeScript.\n\n## Status\n\n| Category         | Status                                                                                                        |\n| ---------------- | ------------------------------------------------------------------------------------------------------------- |\n| Version          | [![npm](https://img.shields.io/npm/v/eslint-config-es)](https://www.npmjs.com/package/eslint-config-es)       |\n| Dependencies     | ![David](https://img.shields.io/david/thenativeweb/eslint-config-es)                                          |\n| Dev dependencies | ![David](https://img.shields.io/david/dev/thenativeweb/eslint-config-es)                                      |\n| Build            | ![GitHub Actions](https://github.com/thenativeweb/eslint-config-es/workflows/Release/badge.svg?branch=master) |\n| License          | ![GitHub](https://img.shields.io/github/license/thenativeweb/eslint-config-es)                                |\n\n## Installation\n\n```shell\n$ npm install eslint-config-es \\\n              eslint\n```\n\nThe following additional ESLint plugins are included by default, so you don't have to install them:\n\n| Plugin                                                                                             | Automatically enabled |\n| -------------------------------------------------------------------------------------------------- | --------------------- |\n| [eslint-plugin-extended](https://www.npmjs.com/package/eslint-plugin-extended)                     | Yes                   |\n| [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha)                           | Yes                   |\n| [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)                           | No                    |\n| [eslint-plugin-unicorn](https://www.npmjs.com/package/eslint-plugin-unicorn)                       | Yes                   |\n| [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) | No                    |\n\nTo enable support for React and JSX, all you need to do is to install the [react](https://www.npmjs.com/package/react) module. The appropriate rules will become enabled automatically.\n\nTo enable support for TypeScript, all you need to do is to install the [typescript](https://www.npmjs.com/package/typescript) module. The appropriate rules will become enabled automatically for `.ts` and `.tsx` files. The generated configuration expects a `tsconfig.json` at the project root.\n\n## Quick Start\n\nThis module contains a very strict ESLint configuration for ES2015 and above, both for Node.js and browser development. Its aims to eradicate _any_ variation in code style. If you can not tell any more, based on little individual manners, who of your co-workers wrote a piece of code, this module succeeded. This helps you to narrow down your focus to pure functionality, as you do not have to think about code styling any more at all.\n\nTo use one of those configurations, create a `.eslintrc.json` file in your project and use the `extends` keyword.\n\n```json\n{\n  \"extends\": \"es/node\"\n}\n```\n\nAlternatively, you may also use `es/browser`.\n\nIf you want to override any rules, you can do so in your configuration file.\n\n## Running the build\n\nSince this module is required by [roboter](https://www.npmjs.com/package/roboter), it can not use roboter to build itself. Hence you have to use `npm` for that.\n\nTo analyse the source code run the following command:\n\n```shell\n$ npm run analyse\n```\n",
+    "licenseText": "The MIT License (MIT)\nCopyright (c) 2015-2019 the native web.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/eslint-config-es/-/eslint-config-es-3.19.12.tgz#b78a69c0c27d7c6b7d6e3f788aeef365de5f45e2",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/eslint-config-es/-/eslint-config-es-3.19.12.tgz",
+    "hash": "b78a69c0c27d7c6b7d6e3f788aeef365de5f45e2",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "b78a69c0c27d7c6b7d6e3f788aeef365de5f45e2"
+}

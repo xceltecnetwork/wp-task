@@ -1,0 +1,33 @@
+{
+  "manifest": {
+    "name": "ric-shim",
+    "description": "Shim for requestIdleCallback",
+    "version": "1.0.0",
+    "author": {
+      "name": "Henrik Joreteg",
+      "email": "henrik@joreteg.com",
+      "url": "joreteg.com"
+    },
+    "keywords": [
+      "requestIdleCallback",
+      "shim"
+    ],
+    "license": "MIT",
+    "main": "index.js",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-ric-shim-1.0.0-a20a8edfcbd05f304b58a1b52a846d53baccacf4/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# ric-shim\n\n![](https://img.shields.io/npm/dm/ric-shim.svg)![](https://img.shields.io/npm/v/ric-shim.svg)![](https://img.shields.io/npm/l/ric-shim.svg) [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)\n\n`requestIdleCallback` is awesome. I want to use it in my projects and install it from npm.\n\nI was going to write a shim that would fallback to a simple `setTimeout` only to find that the awesome [Paul Lewis](https://twitter.com/aerotwist) had [already done this](https://gist.github.com/paullewis/55efe5d6f05434a96c36).\n\nBut in addition to shimming it for browser use, I also wanted it to not break code if used from within node.js (falls back to `setTimeout`).\n\nSo... here we are.\n\nI simply wrapped/published it for compatibility with npm-based frontend projects and changed it to not blow up if used in a node environment where `window` obviously won't be defined. Instead it simply checks to see if `requestIdleCallback` exists and uses it if it's there.\n\nI didn't even write any tests!?!! The audacity! Yeah, I know. Deal with it. Or don't and use something else.\n\nAll credit for the actual fallback code goes to [Paul Lewis](https://twitter.com/aerotwist). The original license is retained in a `NOTICE` file in my best efforts to comply with the original licensing. If I'm doing this wrong, just tell me and please love me despite my many flaws.\n\n## install\n\n```\nnpm install ric-shim\n```\n\n## example\n\n```javascript\nimport requestIdleCallback from 'ric-shim'\n\nrequestIdleCallback(() => {\n  // do your thang!\n})\n```\n\nOr if you're not into the fancy-pants ES6+ modules thing:\n\n```javascript\nvar requestIdleCallback = require('ric-shim')\n\nrequestIdleCallback(function () {\n  // do your thang!\n})\n```\n\n## what about cancelling?\n\nYeah, you probably won't need it, but in case you do that's exported too, as a property of the main export:\n\n```javascript\nimport requestIdleCallback, { cancelIdleCallback } from 'ric-shim'\n\n// do a thing!\nconst id = requestIdleCallback(doSomething)\n\n// just kidding, nevermind\ncancelIdleCallback(id)\n```\n\nOr node-style:\n\n```javascript\nvar requestIdleCallback = require('ric-shim')\nvar cancel = requestIdleCallback.cancelIdleCallback\n\n// do a thing!\nvar id = requestIdleCallback(doSomething)\n\n// just kidding, nevermind\ncancel(id)\n```\n\n## credits\n\nIf you like this sort of stuff and think there may be something to this whole \"web thing\" you may want to follow [@HenrikJoreteg](http://twitter.com/henrikjoreteg) on twitter. Or you may not. That's ok too.\n\n## license\n\n[MIT](http://mit.joreteg.com/)\n",
+    "noticeText": "Modified from original source for non-browser environments.\n\nOriginal source is here: https://gist.github.com/paullewis/55efe5d6f05434a96c36\n\nOriginal license follows:\n____________________________\n\nCopyright 2015 Google Inc. All rights reserved.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express\nor implied. See the License for the specific language governing\npermissions and limitations under the License.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/ric-shim/-/ric-shim-1.0.0.tgz#a20a8edfcbd05f304b58a1b52a846d53baccacf4",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/ric-shim/-/ric-shim-1.0.0.tgz",
+    "hash": "a20a8edfcbd05f304b58a1b52a846d53baccacf4",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "a20a8edfcbd05f304b58a1b52a846d53baccacf4"
+}

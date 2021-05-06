@@ -1,0 +1,3 @@
+<!-- Note the $style variable which renders the button style (button vs link) as set on backend. You can see this output when inspecting. Add appropriate (S)CSS directives to match design -->
+<li class="c-button-collection__item c-button-single-style__<?php echo e($style); ?>"><a href="<?php echo e($link['url']); ?>" target="<?php echo e($link['target']); ?>"><?php echo $link['title']; ?><?php echo e($slot); ?></a></li>
+<?php /**PATH D:\local\wp-test-theme\app\public\wp-content\themes\airfleet\theme/components/link.blade.php ENDPATH**/ ?>

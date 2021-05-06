@@ -1,0 +1,68 @@
+{
+  "manifest": {
+    "name": "element-closest",
+    "version": "2.0.2",
+    "description": "Return the closest element matching a selector up the DOM tree",
+    "author": {
+      "name": "Jonathan Neal",
+      "email": "jonathantneal@hotmail.com",
+      "url": "http://jonathantneal.com"
+    },
+    "license": "CC0-1.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jonathantneal/closest.git"
+    },
+    "homepage": "https://github.com/jonathantneal/closest#readme",
+    "bugs": {
+      "url": "https://github.com/jonathantneal/closest/issues"
+    },
+    "main": "element-closest.js",
+    "files": [
+      "element-closest.js"
+    ],
+    "scripts": {
+      "test": "eslint *.js --ignore-path .gitignore && jscs *.js"
+    },
+    "engines": {
+      "node": ">=4.0.0"
+    },
+    "devDependencies": {
+      "eslint": "^3.8.1",
+      "eslint-config-10up": "github:jonathantneal/eslint-config-10up",
+      "jscs": "^3.0.7",
+      "jscs-config-10up": "github:jonathantneal/jscs-config-10up"
+    },
+    "eslintConfig": {
+      "extends": "10up"
+    },
+    "jscsConfig": {
+      "preset": "10up"
+    },
+    "keywords": [
+      "polyfill",
+      "dom",
+      "document",
+      "element",
+      "closest",
+      "matches",
+      "standard",
+      "specification"
+    ],
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-element-closest-2.0.2-72a740a107453382e28df9ce5dbb5a8df0f966ec/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# closest\n\n> Return the closest element matching a selector up the DOM tree\n\n[![NPM Version][npm-img]][npm-url]\n[![Build Status][cli-img]][cli-url]\n[![Licensing][lic-image]][lic-url]\n[![Changelog][log-image]][log-url]\n[![Gitter Chat][git-image]][git-url]\n\n[closest] is a polyfill for [`#Element.closest`].\n\nThe [`#Element.closest`] method returns the closest ancestor of the current\nelement (or the current element itself) which matches the selectors given in\nparameter. If there isn't such an ancestor, it returns null.\n\n```js\nelement.closest(selectorString) //=> element\n```\n\nThis is especially useful for delegating events.\n\n```js\ndocument.addEventListener('click', function (event) {\n\t// find nearest element up the tree that is an <a>\n\tvar link = event.target.closest('a');\n\n\tif (link) {\n\t\t// do something with the <a>\n\t\tevent.preventDefault();\n\t}\n});\n```\n\n## matches\n\nThe  also polyfills [`#Element.matches`], which is\nwidely supported but often vendor-prefixed.\n\n```js\nelement.matches(selectorString) //=> boolean\n```\n\n`matches` is especially useful for short-handing `hasAttribute` or\n`classList.contains` with selectors.\n\n```js\nvar widget = document.querySelector('.custom-widget');\n\nif (widget.matches('[data-active]') || widget.matches('.widget--active')) {\n\t// do something with the active widget\n}\n```\n\n## Browser compatibility\n\n| Browser           | Native Support | Polyfill Support |\n| ----------------- | -------------- | ---------------- |\n| Android           | 53             | 2.2+             |\n| Blackberry        | ✘              | 7+               |\n| Chrome            | 41+            | 4 - 40           |\n| Edge              | ✘              | 12+              |\n| Firefox           | 35+            | 3.5 - 34         |\n| Internet Explorer | ✘              | 8+               |\n| Opera             | 28+            | 10 - 27          |\n| Opera Mobile      | 37+            | 12+              |\n| Safari (iOS)      | 9.2+           | 3.2 - 8.4        |\n| Safari (MacOS)    | 9.1+           | 3.1 - 8          |\n\n### Internet Explorer 8\n\n`closest` is especially useful for delegating events, but remember that\nInternet Explorer 8 does not support [`#Element.addEventListener`].\n\n[closest]: https://github.com/jonathantneal/closest\n[`#Element.closest`]: https://dom.spec.whatwg.org/#dom-element-closest\n[`#Element.matches`]: https://dom.spec.whatwg.org/#dom-element-matches\n[`#Element.addEventListener`]: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget.addEventListener#Browser_compatibility\n\n[npm-url]: https://www.npmjs.com/package/element-closest\n[npm-img]: https://img.shields.io/npm/v/element-closest.svg?style=flat-square\n[cli-url]: https://travis-ci.org/jonathantneal/closest\n[cli-img]: https://img.shields.io/travis/jonathantneal/closest.svg?style=flat-square\n[lic-url]: LICENSE.md\n[lic-image]: https://img.shields.io/npm/l/element-closest.svg?style=flat-square\n[log-url]: CHANGELOG.md\n[log-image]: https://img.shields.io/badge/changelog-md-blue.svg?style=flat-square\n[git-url]: https://gitter.im/jonathantneal/closest\n[git-image]: https://img.shields.io/badge/chat-gitter-blue.svg?style=flat-square\n",
+    "licenseText": "# CC0 1.0 Universal\n\n## Statement of Purpose\n\nThe laws of most jurisdictions throughout the world automatically confer\nexclusive Copyright and Related Rights (defined below) upon the creator and\nsubsequent owner(s) (each and all, an “owner”) of an original work of\nauthorship and/or a database (each, a “Work”).\n\nCertain owners wish to permanently relinquish those rights to a Work for the\npurpose of contributing to a commons of creative, cultural and scientific works\n(“Commons”) that the public can reliably and without fear of later claims of\ninfringement build upon, modify, incorporate in other works, reuse and\nredistribute as freely as possible in any form whatsoever and for any purposes,\nincluding without limitation commercial purposes. These owners may contribute\nto the Commons to promote the ideal of a free culture and the further\nproduction of creative, cultural and scientific works, or to gain reputation or\ngreater distribution for their Work in part through the use and efforts of\nothers.\n\nFor these and/or other purposes and motivations, and without any expectation of\nadditional consideration or compensation, the person associating CC0 with a\nWork (the “Affirmer”), to the extent that he or she is an owner of Copyright\nand Related Rights in the Work, voluntarily elects to apply CC0 to the Work and\npublicly distribute the Work under its terms, with knowledge of his or her\nCopyright and Related Rights in the Work and the meaning and intended legal\neffect of CC0 on those rights.\n\n1. Copyright and Related Rights. A Work made available under CC0 may be\n   protected by copyright and related or neighboring rights (“Copyright and\n   Related Rights”). Copyright and Related Rights include, but are not limited\n   to, the following:\n\t1. the right to reproduce, adapt, distribute, perform, display,\n\t   communicate, and translate a Work;\n\t2. moral rights retained by the original author(s) and/or performer(s);\n\t3. publicity and privacy rights pertaining to a person’s image or likeness\n\t   depicted in a Work;\n\t4. rights protecting against unfair competition in regards to a Work,\n\t   subject to the limitations in paragraph 4(i), below;\n\t5. rights protecting the extraction, dissemination, use and reuse of data\n\t   in a Work;\n\t6. database rights (such as those arising under Directive 96/9/EC of the\n\t   European Parliament and of the Council of 11 March 1996 on the legal\n\t   protection of databases, and under any national implementation thereof,\n\t   including any amended or successor version of such directive); and\n\t7. other similar, equivalent or corresponding rights throughout the world\n\t   based on applicable law or treaty, and any national implementations\n\t   thereof.\n\n2. Waiver. To the greatest extent permitted by, but not in contravention of,\napplicable law, Affirmer hereby overtly, fully, permanently, irrevocably and\nunconditionally waives, abandons, and surrenders all of Affirmer’s Copyright\nand Related Rights and associated claims and causes of action, whether now\nknown or unknown (including existing as well as future claims and causes of\naction), in the Work (i) in all territories worldwide, (ii) for the maximum\nduration provided by applicable law or treaty (including future time\nextensions), (iii) in any current or future medium and for any number of\ncopies, and (iv) for any purpose whatsoever, including without limitation\ncommercial, advertising or promotional purposes (the “Waiver”). Affirmer makes\nthe Waiver for the benefit of each member of the public at large and to the\ndetriment of Affirmer’s heirs and successors, fully intending that such Waiver\nshall not be subject to revocation, rescission, cancellation, termination, or\nany other legal or equitable action to disrupt the quiet enjoyment of the Work\nby the public as contemplated by Affirmer’s express Statement of Purpose.\n\n3. Public License Fallback. Should any part of the Waiver for any reason be\njudged legally invalid or ineffective under applicable law, then the Waiver\nshall be preserved to the maximum extent permitted taking into account\nAffirmer’s express Statement of Purpose. In addition, to the extent the Waiver\nis so judged Affirmer hereby grants to each affected person a royalty-free, non\ntransferable, non sublicensable, non exclusive, irrevocable and unconditional\nlicense to exercise Affirmer’s Copyright and Related Rights in the Work (i) in\nall territories worldwide, (ii) for the maximum duration provided by applicable\nlaw or treaty (including future time extensions), (iii) in any current or\nfuture medium and for any number of copies, and (iv) for any purpose\nwhatsoever, including without limitation commercial, advertising or promotional\npurposes (the “License”). The License shall be deemed effective as of the date\nCC0 was applied by Affirmer to the Work. Should any part of the License for any\nreason be judged legally invalid or ineffective under applicable law, such\npartial invalidity or ineffectiveness shall not invalidate the remainder of the\nLicense, and in such case Affirmer hereby affirms that he or she will not (i)\nexercise any of his or her remaining Copyright and Related Rights in the Work\nor (ii) assert any associated claims and causes of action with respect to the\nWork, in either case contrary to Affirmer’s express Statement of Purpose.\n\n4. Limitations and Disclaimers.\n    1. No trademark or patent rights held by Affirmer are waived, abandoned,\n       surrendered, licensed or otherwise affected by this document.\n    2. Affirmer offers the Work as-is and makes no representations or\n       warranties of any kind concerning the Work, express, implied, statutory\n       or otherwise, including without limitation warranties of title,\n       merchantability, fitness for a particular purpose, non infringement, or\n       the absence of latent or other defects, accuracy, or the present or\n       absence of errors, whether or not discoverable, all to the greatest\n       extent permissible under applicable law.\n    3. Affirmer disclaims responsibility for clearing rights of other persons\n       that may apply to the Work or any use thereof, including without\n       limitation any person’s Copyright and Related Rights in the Work.\n       Further, Affirmer disclaims responsibility for obtaining any necessary\n       consents, permissions or other rights required for any use of the Work.\n    4. Affirmer understands and acknowledges that Creative Commons is not a\n       party to this document and has no duty or obligation with respect to\n       this CC0 or use of the Work.\n\nFor more information, please see\nhttp://creativecommons.org/publicdomain/zero/1.0/.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/element-closest/-/element-closest-2.0.2.tgz#72a740a107453382e28df9ce5dbb5a8df0f966ec",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/element-closest/-/element-closest-2.0.2.tgz",
+    "hash": "72a740a107453382e28df9ce5dbb5a8df0f966ec",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "72a740a107453382e28df9ce5dbb5a8df0f966ec"
+}

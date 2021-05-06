@@ -1,0 +1,53 @@
+{
+  "manifest": {
+    "name": "cssnano-util-raw-cache",
+    "version": "4.0.1",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/cssnano/cssnano.git"
+    },
+    "main": "dist/index.js",
+    "description": "Manages the raw value formatting for generated AST nodes.",
+    "scripts": {
+      "prepublish": "cross-env BABEL_ENV=publish babel src --out-dir dist --ignore /__tests__/"
+    },
+    "homepage": "https://github.com/cssnano/cssnano",
+    "bugs": {
+      "url": "https://github.com/cssnano/cssnano/issues"
+    },
+    "engines": {
+      "node": ">=6.9.0"
+    },
+    "files": [
+      "LICENSE-MIT",
+      "dist"
+    ],
+    "license": "MIT",
+    "devDependencies": {
+      "babel-cli": "^6.0.0",
+      "cross-env": "^5.0.0"
+    },
+    "dependencies": {
+      "postcss": "^7.0.0"
+    },
+    "author": {
+      "name": "Ben Briggs",
+      "email": "beneb.info@gmail.com",
+      "url": "http://beneb.info"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-cssnano-util-raw-cache-4.0.1-b26d5fd5f72a11dfe7a7846fb4c67260f96bf282/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# cssnano-util-raw-cache\n\n> Manages the raw value formatting for generated AST nodes.\n\n\n## Contributors\n\nSee [CONTRIBUTORS.md](https://github.com/cssnano/cssnano/blob/master/CONTRIBUTORS.md).\n\n\n## License\n\nMIT © [Ben Briggs](http://beneb.info)\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/cssnano-util-raw-cache/-/cssnano-util-raw-cache-4.0.1.tgz#b26d5fd5f72a11dfe7a7846fb4c67260f96bf282",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/cssnano-util-raw-cache/-/cssnano-util-raw-cache-4.0.1.tgz",
+    "hash": "b26d5fd5f72a11dfe7a7846fb4c67260f96bf282",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "b26d5fd5f72a11dfe7a7846fb4c67260f96bf282"
+}

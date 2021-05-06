@@ -1,0 +1,99 @@
+{
+  "manifest": {
+    "name": "postcss-sorting",
+    "version": "5.0.0",
+    "description": "PostCSS plugin to keep rules and at-rules content in order.",
+    "keywords": [
+      "postcss",
+      "css",
+      "postcss-plugin",
+      "sorting",
+      "order"
+    ],
+    "author": {
+      "name": "Aleks Hudochenkov",
+      "email": "aleks@hudochenkov.com"
+    },
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/hudochenkov/postcss-sorting.git"
+    },
+    "bugs": {
+      "url": "https://github.com/hudochenkov/postcss-sorting/issues"
+    },
+    "homepage": "https://github.com/hudochenkov/postcss-sorting",
+    "files": [
+      "lib",
+      "!lib/**/__tests__",
+      "index.js",
+      "!.DS_Store"
+    ],
+    "engines": {
+      "node": ">=8.7.0"
+    },
+    "dependencies": {
+      "lodash": "^4.17.11",
+      "postcss": "^7.0.14"
+    },
+    "devDependencies": {
+      "eslint": "~5.16.0",
+      "eslint-config-hudochenkov": "~3.0.0",
+      "eslint-config-prettier": "~4.1.0",
+      "husky": "^1.3.1",
+      "jest": "^24.7.1",
+      "jest-watch-typeahead": "^0.3.0",
+      "lint-staged": "^8.1.5",
+      "postcss-html": "^0.36.0",
+      "postcss-jsx": "^0.36.0",
+      "postcss-syntax": "^0.36.2",
+      "prettier": "~1.17.0"
+    },
+    "scripts": {
+      "test": "npm run lint && jest",
+      "jest": "jest",
+      "watch": "jest --watch",
+      "coverage": "jest --coverage",
+      "fix": "npm run lint -- --fix && prettier --write *.js 'lib/**/*.js'",
+      "lint": "eslint *.js 'lib/**/*.js'"
+    },
+    "lint-staged": {
+      "*.js": [
+        "eslint --fix",
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "jest": {
+      "setupFiles": [
+        "./jest-setup.js"
+      ],
+      "testEnvironment": "node",
+      "testRegex": "__tests__/[a-zA-Z-]+\\.js$",
+      "watchPlugins": [
+        "jest-watch-typeahead/filename",
+        "jest-watch-typeahead/testname"
+      ]
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-postcss-sorting-5.0.0-4e4ce0a554c17d78d4287f08f792db8992bf62b5/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# PostCSS Sorting [![Build Status][ci-img]][ci] [![npm version][npm-version-img]][npm] [![npm downloads last month][npm-downloads-img]][npm]\n\n[PostCSS] plugin to keep rules and at-rules content in order.\n\nAlso available as [Sublime Text], [Atom], [VS Code], and [Emacs] plugin.\n\nLint and autofix style sheets order with [stylelint-order].\n\n## Features\n\n* Sorts rules and at-rules content.\n* Sorts properties.\n* Sorts at-rules by different options.\n* Groups properties, custom properties, dollar variables, nested rules, nested at-rules.\n* Supports CSS, SCSS (using [postcss-scss]), HTML (with [postcss-html]), CSS-in-JS (with [postcss-jsx]), [PreCSS] and most likely any other syntax added by other PostCSS plugins.\n\n## Installation\n\n```bash\n$ npm install postcss-sorting\n```\n\n## Options\n\nThe plugin has no default options. Everything is disabled by default.\n\n- [`order`](./lib/order/README.md): Specify the order of content within declaration blocks.\n- [`properties-order`](./lib/properties-order/README.md): Specify the order of properties within declaration blocks.\n- [`unspecified-properties-position`](./lib/properties-order/unspecified-properties-position.md): Specify position for properties not specified in `properties-order`.\n- `throw-validate-errors`: Throw config validation errors instead of just showing and ignoring them. Defaults to `false`.\n\n## Caveats\n\n### Handling comments\n\nComments that are before node and on a separate line linked to that node. Shared-line comments are also linked to that node. Shared-line comments are comments which are located after a node and on the same line as a node.\n\n```css\na {\n\ttop: 5px; /* shared-line comment belongs to `top` */\n\t/* comment belongs to `bottom` */\n\t/* comment belongs to `bottom` */\n\tbottom: 15px; /* shared-line comment belongs to `bottom` */\n}\n```\n\n### Ignored at-rules\n\nSome at-rules, like [control](https://sass-lang.com/documentation/file.SASS_REFERENCE.html#control_directives__expressions) and [function](https://sass-lang.com/documentation/file.SASS_REFERENCE.html#function_directives) directives in Sass, are ignored. It means rules won't touch content inside these at-rules, as doing so could change or break functionality.\n\n### CSS-in-JS\n\nPlugin will ignore rules, which have template literal interpolation, to avoid breaking logic:\n\n```js\nconst Component = styled.div`\n\t/* The following properties WILL NOT be sorted, because interpolation is on properties level */\n\tz-index: 1;\n\ttop: 1px;\n\t${props => props.great && 'color: red'};\n\tposition: absolute;\n\tdisplay: block;\n\n\tdiv {\n\t\t/* The following properties WILL be sorted, because interpolation for property value only */\n\t\tz-index: 2;\n\t\tposition: static;\n\t\ttop: ${2 + 10}px;\n\t\tdisplay: inline-block;\n\t}\n`;\n```\n\n## Migration from `2.x`\n\nRemove all `*-empty-line-before` and `clean-empty-lines` options. Use [stylelint] with `--fix` option instead.\n\n`properties-order` doesn't support property groups. Convert it to simple array. Use [stylelint-order] with `--fix` option for empty line before property groups.\n\nConfig for `2.x`:\n\n```json\n{\n\t\"properties-order\": [\n\t\t{\n\t\t\t\"properties\": [\n\t\t\t\t\"margin\",\n\t\t\t\t\"padding\"\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"emptyLineBefore\": true,\n\t\t\t\"properties\": [\n\t\t\t\t\"border\",\n\t\t\t\t\"background\"\n\t\t\t]\n\t\t}\n\t]\n}\n```\n\nConfig for `3.x`:\n\n```json\n{\n\t\"properties-order\": [\n\t\t\"margin\",\n\t\t\"padding\",\n\t\t\"border\",\n\t\t\"background\"\n\t]\n}\n```\n\n## Usage\n\nSee [PostCSS] docs for examples for your environment.\n\n### Text editor\n\nThis plugin available as [Sublime Text], [Atom], [VS Code], and [Emacs] plugin.\n\n### Gulp\n\nAdd [Gulp PostCSS] and PostCSS Sorting to your build tool:\n\n```bash\nnpm install gulp-postcss postcss-sorting --save-dev\n```\n\nEnable PostCSS Sorting within your Gulpfile:\n\n```js\nvar postcss = require('gulp-postcss');\nvar sorting = require('postcss-sorting');\n\ngulp.task('css', function () {\n\treturn gulp.src('./css/src/*.css').pipe(\n\t\tpostcss([\n\t\t\tsorting({ /* options */ })\n\t\t])\n\t).pipe(\n\t\tgulp.dest('./css/src')\n\t);\n});\n```\n\n### Grunt\n\nAdd [Grunt PostCSS] and PostCSS Sorting to your build tool:\n\n```bash\nnpm install grunt-postcss postcss-sorting --save-dev\n```\n\nEnable PostCSS Sorting within your Gruntfile:\n\n```js\ngrunt.loadNpmTasks('grunt-postcss');\n\ngrunt.initConfig({\n\tpostcss: {\n\t\toptions: {\n\t\t\tprocessors: [\n\t\t\t\trequire('postcss-sorting')({ /* options */ })\n\t\t\t]\n\t\t},\n\t\tdist: {\n\t\t\tsrc: 'css/*.css'\n\t\t}\n\t}\n});\n```\n\n### Command Line\n\nAdd [postcss-cli](https://github.com/postcss/postcss-cli) and PostCSS Sorting to your project:\n\n```bash\nnpm install postcss-cli postcss-sorting --save-dev\n```\n\nCreate an appropriate `postcss.config.js` like this example:\n\n```js\nmodule.exports = (ctx) => ({\n  plugins: {\n    'postcss-sorting': {\n      'order': [\n        'custom-properties',\n        'dollar-variables',\n        'declarations',\n        'at-rules',\n        'rules'\n      ],\n\n      'properties-order': 'alphabetical',\n\n      'unspecified-properties-position': 'bottom'\n    }\n  }\n})\n```\n\nOr, simply add the `'postcss-sorting'` section to your existing postcss-cli configuration file. Next, execute:\n\n```bash\npostcss -c postcss.config.js  --no-map -r your_css_file.css\n```\n\nFor more information and options, please consult the [postcss-cli docs](https://github.com/postcss/postcss-cli/blob/master/README.md).\n\n## Related tools\n\n[stylelint] and [stylelint-order] help lint style sheets and let you know if style sheet order is correct. Also, they could autofix style sheets.\n\nI recommend [Prettier] for formatting style sheets.\n\n[ci-img]: https://travis-ci.org/hudochenkov/postcss-sorting.svg\n[ci]: https://travis-ci.org/hudochenkov/postcss-sorting\n[npm-version-img]: https://img.shields.io/npm/v/postcss-sorting.svg\n[npm-downloads-img]: https://img.shields.io/npm/dm/postcss-sorting.svg\n[npm]: https://www.npmjs.com/package/postcss-sorting\n\n[PostCSS]: https://github.com/postcss/postcss\n[Sublime Text]: https://github.com/hudochenkov/sublime-postcss-sorting\n[Atom]: https://github.com/lysyi3m/atom-postcss-sorting\n[VS Code]: https://github.com/mrmlnc/vscode-postcss-sorting\n[Emacs]: https://github.com/P233/postcss-sorting.el\n\n[Gulp PostCSS]: https://github.com/postcss/gulp-postcss\n[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss\n[PreCSS]: https://github.com/jonathantneal/precss\n[postcss-scss]: https://github.com/postcss/postcss-scss\n[postcss-html]: https://github.com/gucong3000/postcss-html\n[postcss-jsx]: https://github.com/gucong3000/postcss-jsx\n[Prettier]: https://prettier.io/\n[stylelint]: https://stylelint.io/\n[stylelint-order]: https://github.com/hudochenkov/stylelint-order\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright 2015-present Aleks Hudochenkov <aleks@hudochenkov.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/postcss-sorting/-/postcss-sorting-5.0.0.tgz#4e4ce0a554c17d78d4287f08f792db8992bf62b5",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/postcss-sorting/-/postcss-sorting-5.0.0.tgz",
+    "hash": "4e4ce0a554c17d78d4287f08f792db8992bf62b5",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "4e4ce0a554c17d78d4287f08f792db8992bf62b5"
+}

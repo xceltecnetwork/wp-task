@@ -1,0 +1,70 @@
+{
+  "manifest": {
+    "name": "mozjpeg",
+    "version": "6.0.1",
+    "description": "mozjpeg wrapper that makes it seamlessly available as a local dependency",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/imagemin/mozjpeg-bin.git"
+    },
+    "bin": {
+      "mozjpeg": "cli.js"
+    },
+    "engines": {
+      "node": ">=6"
+    },
+    "scripts": {
+      "postinstall": "node lib/install.js",
+      "test": "xo && ava",
+      "build-linux": "docker build --tag imagemin/mozjpeg docker && docker run --rm --volume $(pwd)/vendor/linux:/src/out imagemin/mozjpeg cp cjpeg /src/out"
+    },
+    "files": [
+      "index.js",
+      "cli.js",
+      "lib"
+    ],
+    "keywords": [
+      "imagemin",
+      "jpeg",
+      "jpg",
+      "img",
+      "image",
+      "compress",
+      "minify",
+      "mozjpeg",
+      "optimize"
+    ],
+    "dependencies": {
+      "bin-build": "^3.0.0",
+      "bin-wrapper": "^4.0.0",
+      "logalot": "^2.1.0"
+    },
+    "devDependencies": {
+      "ava": "*",
+      "bin-check": "^4.1.0",
+      "compare-size": "^3.0.0",
+      "execa": "^1.0.0",
+      "tempy": "^0.2.1",
+      "xo": "*"
+    },
+    "ava": {
+      "serial": true
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-mozjpeg-6.0.1-56969dddb5741ef2bcb1af066cae21e61a91a27b/package.json",
+    "readmeFilename": "readme.md",
+    "readme": "# mozjpeg-bin [![Build Status](https://travis-ci.org/imagemin/mozjpeg-bin.svg?branch=master)](http://travis-ci.org/imagemin/mozjpeg-bin)\n\n> [mozjpeg](https://github.com/mozilla/mozjpeg) is a production-quality JPEG encoder that improves compression while maintaining compatibility with the vast majority of deployed decoders\n\nYou probably want [`imagemin-mozjpeg`](https://github.com/imagemin/imagemin-mozjpeg) instead.\n\n\n## Install\n\n```\n$ npm install mozjpeg\n```\n\n\n## Usage\n\n```js\nconst {execFile} = require('child_process');\nconst mozjpeg = require('mozjpeg');\n\nexecFile(mozjpeg, ['-outfile', 'output.jpg', 'input.jpg'], err => {\n\tconsole.log('Image minified!');\n});\n```\n\n\n## CLI\n\n```\n$ npm install --global mozjpeg\n```\n\n```\n$ mozjpeg --help\n```\n\n\n## License\n\nMIT © [Imagemin](https://github.com/imagemin)\n",
+    "licenseText": "MIT License\n\nCopyright (c) Imagemin\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/mozjpeg/-/mozjpeg-6.0.1.tgz#56969dddb5741ef2bcb1af066cae21e61a91a27b",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/mozjpeg/-/mozjpeg-6.0.1.tgz",
+    "hash": "56969dddb5741ef2bcb1af066cae21e61a91a27b",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "56969dddb5741ef2bcb1af066cae21e61a91a27b"
+}

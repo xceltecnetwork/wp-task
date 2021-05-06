@@ -1,0 +1,41 @@
+{
+  "manifest": {
+    "name": "shim-keyboard-event-key",
+    "version": "1.0.3",
+    "description": "Tiny KeyboardEvent#key shim for IE and MS Edge",
+    "keywords": [
+      "keyboard-event",
+      "key",
+      "shim",
+      "polyfill",
+      "ie",
+      "ms-edge"
+    ],
+    "bugs": {
+      "url": "https://github.com/shvaikalesh/shim-keyboard-event-key/issues"
+    },
+    "license": "MIT",
+    "author": {
+      "name": "Aleksey Shvayka",
+      "email": "shvaikalesh@gmail.com"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/shvaikalesh/shim-keyboard-event-key.git"
+    },
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-shim-keyboard-event-key-1.0.3-9a9441d6b7d1fb25819d86182caf554e821a515c/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# shim-keyboard-event-key\n\nTiny `KeyboardEvent#key` shim for IE and MS Edge.\n\n* [MS Edge bug report](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/8860571)\n* [Can I use `key`?](http://caniuse.com/#feat=keyboardevent-key)\n* [W3C: UI Events spec](https://www.w3.org/TR/uievents)\n* [W3C: `key` values](https://www.w3.org/TR/uievents-key)\n\n## Up and running\n\nGet the package from [npm](https://www.npmjs.com/package/shim-keyboard-event-key):\n\n```sh\nnpm install shim-keyboard-event-key --save\n```\n\nAnd simply require the module:\n\n```js\nimport \"shim-keyboard-event-key\"\n```\n\nOtherwise, plug it the old-fashioned way:\n\n```html\n<script src=\"https://unpkg.com/shim-keyboard-event-key\" async></script>\n```\n\n## Example\n\n```js\ndocument.addEventListener(\"keyup\", event => {\n  if (event.defaultPrevented) return\n\n  switch (event.key) {\n    case \"ArrowLeft\":\n    case \"PageUp\":\n      player.prev()\n      break\n\n    case \"ArrowRight\":\n    case \"PageDown\":\n      player.next()\n      break\n  }\n})\n```\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/shim-keyboard-event-key/-/shim-keyboard-event-key-1.0.3.tgz#9a9441d6b7d1fb25819d86182caf554e821a515c",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/shim-keyboard-event-key/-/shim-keyboard-event-key-1.0.3.tgz",
+    "hash": "9a9441d6b7d1fb25819d86182caf554e821a515c",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "9a9441d6b7d1fb25819d86182caf554e821a515c"
+}

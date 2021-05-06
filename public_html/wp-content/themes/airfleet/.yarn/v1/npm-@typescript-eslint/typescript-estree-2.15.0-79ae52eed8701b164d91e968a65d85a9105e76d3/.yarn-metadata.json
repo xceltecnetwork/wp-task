@@ -1,0 +1,88 @@
+{
+  "manifest": {
+    "name": "@typescript-eslint/typescript-estree",
+    "version": "2.15.0",
+    "description": "A parser that converts TypeScript source code into an ESTree compatible form",
+    "main": "dist/parser.js",
+    "types": "dist/parser.d.ts",
+    "files": [
+      "dist",
+      "README.md",
+      "LICENSE"
+    ],
+    "engines": {
+      "node": "^8.10.0 || ^10.13.0 || >=11.10.1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/typescript-eslint/typescript-eslint.git",
+      "directory": "packages/typescript-estree"
+    },
+    "bugs": {
+      "url": "https://github.com/typescript-eslint/typescript-eslint/issues"
+    },
+    "license": "BSD-2-Clause",
+    "keywords": [
+      "ast",
+      "estree",
+      "ecmascript",
+      "javascript",
+      "typescript",
+      "parser",
+      "syntax"
+    ],
+    "scripts": {
+      "build": "tsc -b tsconfig.build.json",
+      "clean": "tsc -b tsconfig.build.json --clean",
+      "format": "prettier --write \"./**/*.{ts,js,json,md}\" --ignore-path ../../.prettierignore",
+      "lint": "eslint . --ext .js,.ts --ignore-path='../../.eslintignore'",
+      "test": "jest --coverage",
+      "typecheck": "tsc -p tsconfig.json --noEmit"
+    },
+    "dependencies": {
+      "debug": "^4.1.1",
+      "eslint-visitor-keys": "^1.1.0",
+      "glob": "^7.1.6",
+      "is-glob": "^4.0.1",
+      "lodash.unescape": "4.0.1",
+      "semver": "^6.3.0",
+      "tsutils": "^3.17.1"
+    },
+    "devDependencies": {
+      "@babel/code-frame": "7.5.5",
+      "@babel/parser": "7.7.5",
+      "@babel/types": "^7.7.4",
+      "@types/babel__code-frame": "^7.0.1",
+      "@types/debug": "^4.1.5",
+      "@types/glob": "^7.1.1",
+      "@types/is-glob": "^4.0.1",
+      "@types/lodash.unescape": "^4.0.4",
+      "@types/semver": "^6.2.0",
+      "@types/tmp": "^0.1.0",
+      "@typescript-eslint/shared-fixtures": "2.15.0",
+      "tmp": "^0.1.0",
+      "typescript": "*"
+    },
+    "peerDependenciesMeta": {
+      "typescript": {
+        "optional": true
+      }
+    },
+    "gitHead": "ac789ddec97f361561ae1403181d9ef0678012c6",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-@typescript-eslint/typescript-estree-2.15.0-79ae52eed8701b164d91e968a65d85a9105e76d3/package.json",
+    "readmeFilename": "README.md",
+    "readme": "<h1 align=\"center\">TypeScript ESTree</h1>\n\n<p align=\"center\">A parser that converts TypeScript source code into an <a href=\"https://github.com/estree/estree\">ESTree</a>-compatible form</p>\n\n<p align=\"center\">\n    <a href=\"https://dev.azure.com/typescript-eslint/TypeScript%20ESLint/_build/latest?definitionId=1&branchName=master\"><img src=\"https://img.shields.io/azure-devops/build/typescript-eslint/TypeScript%20ESLint/1/master.svg?label=%F0%9F%9A%80%20Azure%20Pipelines&style=flat-square\" alt=\"Azure Pipelines\"/></a>\n    <a href=\"https://github.com/typescript-eslint/typescript-eslint/blob/master/LICENSE\"><img src=\"https://img.shields.io/npm/l/typescript-estree.svg?style=flat-square\" alt=\"GitHub license\" /></a>\n    <a href=\"https://www.npmjs.com/package/@typescript-eslint/typescript-estree\"><img src=\"https://img.shields.io/npm/v/@typescript-eslint/typescript-estree.svg?style=flat-square\" alt=\"NPM Version\" /></a>\n    <a href=\"https://www.npmjs.com/package/@typescript-eslint/typescript-estree\"><img src=\"https://img.shields.io/npm/dm/@typescript-eslint/typescript-estree.svg?style=flat-square\" alt=\"NPM Downloads\" /></a>\n    <a href=\"http://commitizen.github.io/cz-cli/\"><img src=\"https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square\" alt=\"Commitizen friendly\" /></a>\n</p>\n\n<br>\n\n## About\n\nThis parser is somewhat generic and robust, and could be used to power any use-case which requires taking TypeScript source code and producing an ESTree-compatible AST.\n\nIn fact, it is already used within these hyper-popular open-source projects to power their TypeScript support:\n\n- [ESLint](https://eslint.org), the pluggable linting utility for JavaScript and JSX\n- [Prettier](https://prettier.io), an opinionated code formatter\n\n## Installation\n\n```sh\nyarn add -D @typescript-eslint/typescript-estree\n```\n\n## API\n\n### parse(code, options)\n\nParses the given string of code with the options provided and returns an ESTree-compatible AST. The options object has the following properties:\n\n```js\n{\n  // attach range information to each node\n  range: false,\n\n  // attach line/column location information to each node\n  loc: false,\n\n  // create a top-level tokens array containing all tokens\n  tokens: false,\n\n  // create a top-level comments array containing all comments\n  comment: false,\n\n  /*\n   * enable parsing JSX. For more details, see https://www.typescriptlang.org/docs/handbook/jsx.html\n   *\n   * NOTE: this setting does not effect known file types (.js, .jsx, .ts, .tsx, .json) because the\n   * TypeScript compiler has its own internal handling for known file extensions.\n   *\n   * Exact behaviour:\n   * - .js, .jsx, .tsx files are parsed as if this is true\n   * - .ts files are parsed as if this is false\n   * - unknown extensions (.md, .vue) will respect this setting\n   */\n  jsx: false,\n\n  /*\n   * The JSX AST changed the node type for string literals\n   * inside a JSX Element from `Literal` to `JSXText`.\n   * When value is `true`, these nodes will be parsed as type `JSXText`.\n   * When value is `false`, these nodes will be parsed as type `Literal`.\n   */\n  useJSXTextNode: false,\n\n  // Cause the parser to error if it encounters an unknown AST node type (useful for testing)\n  errorOnUnknownASTType: false,\n\n  /*\n   * Allows overriding of function used for logging.\n   * When value is `false`, no logging will occur.\n   * When value is not provided, `console.log()` will be used.\n   */\n  loggerFn: undefined,\n\n  /**\n   * Allows the user to control whether or not two-way AST node maps are preserved\n   * during the AST conversion process.\n   *\n   * By default: the AST node maps are NOT preserved, unless `project` has been specified,\n   * in which case the maps are made available on the returned `parserServices`.\n   *\n   * NOTE: If `preserveNodeMaps` is explicitly set by the user, it will be respected,\n   * regardless of whether or not `project` is in use.\n   */\n  preserveNodeMaps: undefined\n}\n```\n\nExample usage:\n\n```js\nconst parser = require('@typescript-eslint/typescript-estree');\nconst code = `const hello: string = 'world';`;\nconst ast = parser.parse(code, {\n  range: true,\n  loc: true,\n});\n```\n\n### version\n\nExposes the current version of `typescript-estree` as specified in `package.json`.\n\nExample usage:\n\n```js\nconst parser = require('@typescript-eslint/typescript-estree');\nconst version = parser.version;\n```\n\n### `AST_NODE_TYPES`\n\nExposes an object that contains the AST node types produced by the parser.\n\nExample usage:\n\n```js\nconst parser = require('@typescript-eslint/typescript-estree');\nconst astNodeTypes = parser.AST_NODE_TYPES;\n```\n\n## Supported TypeScript Version\n\nWe will always endeavor to support the latest stable version of TypeScript.\n\nThe version of TypeScript currently supported by this parser is `~3.2.1`. This is reflected in the `devDependency` requirement within the package.json file, and it is what the tests will be run against. We have an open `peerDependency` requirement in order to allow for experimentation on newer/beta versions of TypeScript.\n\nIf you use a non-supported version of TypeScript, the parser will log a warning to the console.\n\n**Please ensure that you are using a supported version before submitting any issues/bug reports.**\n\n## Reporting Issues\n\nPlease check the current list of open and known issues and ensure the issue has not been reported before. When creating a new issue provide as much information about your environment as possible. This includes:\n\n- TypeScript version\n- The `typescript-estree` version\n\n## AST Alignment Tests\n\nA couple of years after work on this parser began, the TypeScript Team at Microsoft began [officially supporting TypeScript parsing via Babel](https://blogs.msdn.microsoft.com/typescript/2018/08/27/typescript-and-babel-7/).\n\nI work closely with the TypeScript Team and we are gradually aligning the AST of this project with the one produced by Babel's parser. To that end, I have created a full test harness to compare the ASTs of the two projects which runs on every PR, please see the code for more details.\n\n## Build/Test Commands\n\n- `npm test` - run all tests\n- `npm run unit-tests` - run only unit tests\n- `npm run ast-alignment-tests` - run only Babylon AST alignment tests\n\n## Debugging\n\nIf you encounter a bug with the parser that you want to investigate, you can turn on the debug logging via setting the environment variable: `DEBUG=typescript-eslint:*`.\nI.e. in this repo you can run: `DEBUG=typescript-eslint:* yarn lint`.\n\n## License\n\nTypeScript ESTree inherits from the the original TypeScript ESLint Parser license, as the majority of the work began there. It is licensed under a permissive BSD 2-clause license.\n\n## Contributing\n\n[See the contributing guide here](../../CONTRIBUTING.md)\n",
+    "licenseText": "TypeScript ESTree\n\nOriginally extracted from:\n\nTypeScript ESLint Parser\nCopyright JS Foundation and other contributors, https://js.foundation\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n  * Redistributions of source code must retain the above copyright\n    notice, this list of conditions and the following disclaimer.\n  * Redistributions in binary form must reproduce the above copyright\n    notice, this list of conditions and the following disclaimer in the\n    documentation and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY\nDIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\nON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\nTHIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-2.15.0.tgz#79ae52eed8701b164d91e968a65d85a9105e76d3",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-2.15.0.tgz",
+    "hash": "79ae52eed8701b164d91e968a65d85a9105e76d3",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "79ae52eed8701b164d91e968a65d85a9105e76d3"
+}

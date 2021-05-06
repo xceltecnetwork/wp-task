@@ -1,0 +1,40 @@
+{
+  "manifest": {
+    "name": "@types/imagemin-jpegtran",
+    "version": "5.0.0",
+    "description": "TypeScript definitions for imagemin-jpegtran",
+    "license": "MIT",
+    "contributors": [
+      {
+        "name": "Romain Faust",
+        "url": "https://github.com/romain-faust"
+      }
+    ],
+    "main": "",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    "scripts": {},
+    "dependencies": {
+      "@types/imagemin": "*"
+    },
+    "typesPublisherContentHash": "1afc32ea6885c44242ecefdbd683dc77fc38a7377e55921c66e296d002588f8e",
+    "typeScriptVersion": "2.0",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-@types/imagemin-jpegtran-5.0.0-44d98874bdcc3f290ce1e158355f33fc90ac2758/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Installation\n> `npm install --save @types/imagemin-jpegtran`\n\n# Summary\nThis package contains type definitions for imagemin-jpegtran (https://github.com/imagemin/imagemin-jpegtran#readme).\n\n# Details\nFiles were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/imagemin-jpegtran\n\nAdditional Details\n * Last updated: Sun, 26 Aug 2018 03:30:33 GMT\n * Dependencies: imagemin\n * Global values: none\n\n# Credits\nThese definitions were written by Romain Faust <https://github.com/romain-faust>.\n",
+    "licenseText": "    MIT License\n\n    Copyright (c) Microsoft Corporation. All rights reserved.\n\n    Permission is hereby granted, free of charge, to any person obtaining a copy\n    of this software and associated documentation files (the \"Software\"), to deal\n    in the Software without restriction, including without limitation the rights\n    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n    copies of the Software, and to permit persons to whom the Software is\n    furnished to do so, subject to the following conditions:\n\n    The above copyright notice and this permission notice shall be included in all\n    copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n    SOFTWARE\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@types/imagemin-jpegtran/-/imagemin-jpegtran-5.0.0.tgz#44d98874bdcc3f290ce1e158355f33fc90ac2758",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@types/imagemin-jpegtran/-/imagemin-jpegtran-5.0.0.tgz",
+    "hash": "44d98874bdcc3f290ce1e158355f33fc90ac2758",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "44d98874bdcc3f290ce1e158355f33fc90ac2758"
+}

@@ -1,0 +1,15 @@
+{
+  "admin.css": "styles/admin.css",
+  "admin.js": "admin.js",
+  "editor.css": "styles/editor.css",
+  "editor.js": "editor.js",
+  "login.css": "styles/login.css",
+  "login.js": "login.js",
+  "theme.css": "styles/theme.css",
+  "theme.js": "theme.js",
+  "images/background_pattern.jpg": "images/background_pattern.4321ce2de5.jpg",
+  "images/duck.jpg": "images/duck.e0e520cb4e.jpg",
+  "images/duck_large.jpg": "images/duck_large.b467e54fde.jpg",
+  "images/favicon.ico": "images/favicon.3bb5e12219.ico",
+  "theme.js.LICENSE": "theme.js.LICENSE"
+}

@@ -1,0 +1,41 @@
+{
+  "manifest": {
+    "name": "@types/imagemin-svgo",
+    "version": "7.0.0",
+    "description": "TypeScript definitions for imagemin-svgo",
+    "license": "MIT",
+    "contributors": [
+      {
+        "name": "Romain Faust",
+        "url": "https://github.com/romain-faust"
+      }
+    ],
+    "main": "",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    "scripts": {},
+    "dependencies": {
+      "@types/imagemin": "*",
+      "@types/svgo": "*"
+    },
+    "typesPublisherContentHash": "a70dead413572f969f2e464a136349a305c7ffe21b530dd760bd7f458812caaf",
+    "typeScriptVersion": "2.2",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-@types/imagemin-svgo-7.0.0-c9ffe209ed7695c9ae4bebef083f47de2cd98c1e/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Installation\n> `npm install --save @types/imagemin-svgo`\n\n# Summary\nThis package contains type definitions for imagemin-svgo (https://github.com/imagemin/imagemin-svgo#readme).\n\n# Details\nFiles were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/imagemin-svgo\n\nAdditional Details\n * Last updated: Sun, 26 Aug 2018 03:30:33 GMT\n * Dependencies: imagemin, svgo\n * Global values: none\n\n# Credits\nThese definitions were written by Romain Faust <https://github.com/romain-faust>.\n",
+    "licenseText": "    MIT License\n\n    Copyright (c) Microsoft Corporation. All rights reserved.\n\n    Permission is hereby granted, free of charge, to any person obtaining a copy\n    of this software and associated documentation files (the \"Software\"), to deal\n    in the Software without restriction, including without limitation the rights\n    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n    copies of the Software, and to permit persons to whom the Software is\n    furnished to do so, subject to the following conditions:\n\n    The above copyright notice and this permission notice shall be included in all\n    copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n    SOFTWARE\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@types/imagemin-svgo/-/imagemin-svgo-7.0.0.tgz#c9ffe209ed7695c9ae4bebef083f47de2cd98c1e",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@types/imagemin-svgo/-/imagemin-svgo-7.0.0.tgz",
+    "hash": "c9ffe209ed7695c9ae4bebef083f47de2cd98c1e",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "c9ffe209ed7695c9ae4bebef083f47de2cd98c1e"
+}

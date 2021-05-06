@@ -1,0 +1,40 @@
+{
+  "manifest": {
+    "name": "@types/imagemin-optipng",
+    "version": "5.2.0",
+    "description": "TypeScript definitions for imagemin-optipng",
+    "license": "MIT",
+    "contributors": [
+      {
+        "name": "Romain Faust",
+        "url": "https://github.com/romain-faust"
+      }
+    ],
+    "main": "",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    "scripts": {},
+    "dependencies": {
+      "@types/imagemin": "*"
+    },
+    "typesPublisherContentHash": "7050f2abb12dc7c820423443a8f9d2b741e0cffcfecf8c9290beb2920e175273",
+    "typeScriptVersion": "2.0",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-@types/imagemin-optipng-5.2.0-83046e0695739661fa738ad253bdbf51bc4f9e9d/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Installation\n> `npm install --save @types/imagemin-optipng`\n\n# Summary\nThis package contains type definitions for imagemin-optipng (https://github.com/imagemin/imagemin-optipng#readme).\n\n# Details\nFiles were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/imagemin-optipng\n\nAdditional Details\n * Last updated: Sun, 26 Aug 2018 03:30:33 GMT\n * Dependencies: imagemin\n * Global values: none\n\n# Credits\nThese definitions were written by Romain Faust <https://github.com/romain-faust>.\n",
+    "licenseText": "    MIT License\n\n    Copyright (c) Microsoft Corporation. All rights reserved.\n\n    Permission is hereby granted, free of charge, to any person obtaining a copy\n    of this software and associated documentation files (the \"Software\"), to deal\n    in the Software without restriction, including without limitation the rights\n    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n    copies of the Software, and to permit persons to whom the Software is\n    furnished to do so, subject to the following conditions:\n\n    The above copyright notice and this permission notice shall be included in all\n    copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n    SOFTWARE\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@types/imagemin-optipng/-/imagemin-optipng-5.2.0.tgz#83046e0695739661fa738ad253bdbf51bc4f9e9d",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@types/imagemin-optipng/-/imagemin-optipng-5.2.0.tgz",
+    "hash": "83046e0695739661fa738ad253bdbf51bc4f9e9d",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "83046e0695739661fa738ad253bdbf51bc4f9e9d"
+}

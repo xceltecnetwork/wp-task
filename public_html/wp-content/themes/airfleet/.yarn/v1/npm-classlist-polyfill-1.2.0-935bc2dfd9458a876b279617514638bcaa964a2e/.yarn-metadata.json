@@ -1,0 +1,56 @@
+{
+  "manifest": {
+    "name": "classlist-polyfill",
+    "version": "1.2.0",
+    "description": "Cross-browser JavaScript shim that fully implements element.classList (referenced on MDN)",
+    "main": "src/index.js",
+    "scripts": {
+      "test": "bash ./script/test"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/yola/classlist-polyfill.git"
+    },
+    "keywords": [
+      "classList",
+      "polyfill",
+      "shim",
+      "cross-browser"
+    ],
+    "author": {
+      "name": "Eli Grey",
+      "email": "me@eligrey.com"
+    },
+    "contributors": [
+      {
+        "name": "Eli Grey",
+        "email": "me@eligrey.com"
+      },
+      {
+        "name": "Yola Engineering",
+        "email": "engineers@yola.com",
+        "url": "https://www.yola.com/"
+      }
+    ],
+    "license": "Unlicense",
+    "bugs": {
+      "url": "https://github.com/eligrey/classList.js/issues"
+    },
+    "homepage": "https://github.com/yola/classlist-polyfill",
+    "_registry": "npm",
+    "_loc": ".yarn/v1/npm-classlist-polyfill-1.2.0-935bc2dfd9458a876b279617514638bcaa964a2e/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# classlist-polyfill\n\nPolyfill for [`element.classList`][docs].\n\nThis is a published fork of [classList.js][].\n\n[classList.js]:https://github.com/eligrey/classList.js\n[docs]: https://developer.mozilla.org/en/DOM/element.classList\n\n\n## Installation\n\nDownload using [NPM](https://www.npmjs.com/package/classlist-polyfill):\n\n```shell\nnpm install classlist-polyfill\n```\n\nDownload using [Bower](http://bower.io/):\n\n```shell\nbower install classlist-polyfill\n```\n\n\n## What is the purpose of this repo?\n\nThe upstream maintainer has decided [not to publish][comment].\n\n[comment]: https://github.com/eligrey/classList.js/pull/46#issuecomment-189782600\n\n\n## Contributing\n\nPreferably all changes are made upstream.\n",
+    "licenseText": "This is free and unencumbered software released into the public domain.\n\nAnyone is free to copy, modify, publish, use, compile, sell, or\ndistribute this software, either in source code form or as a compiled\nbinary, for any purpose, commercial or non-commercial, and by any\nmeans.\n\nIn jurisdictions that recognize copyright laws, the author or authors\nof this software dedicate any and all copyright interest in the\nsoftware to the public domain. We make this dedication for the benefit\nof the public at large and to the detriment of our heirs and\nsuccessors. We intend this dedication to be an overt act of\nrelinquishment in perpetuity of all present and future rights to this\nsoftware under copyright law.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR\nOTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,\nARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\nOTHER DEALINGS IN THE SOFTWARE.\n\nFor more information, please refer to <http://unlicense.org/>"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/classlist-polyfill/-/classlist-polyfill-1.2.0.tgz#935bc2dfd9458a876b279617514638bcaa964a2e",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/classlist-polyfill/-/classlist-polyfill-1.2.0.tgz",
+    "hash": "935bc2dfd9458a876b279617514638bcaa964a2e",
+    "registry": "npm"
+  },
+  "registry": "npm",
+  "hash": "935bc2dfd9458a876b279617514638bcaa964a2e"
+}

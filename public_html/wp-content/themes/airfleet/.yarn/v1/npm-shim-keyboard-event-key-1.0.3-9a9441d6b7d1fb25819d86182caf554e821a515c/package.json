@@ -1,0 +1,17 @@
+{
+  "name": "shim-keyboard-event-key",
+  "version": "1.0.3",
+  "description": "Tiny KeyboardEvent#key shim for IE and MS Edge",
+  "keywords": [
+    "keyboard-event",
+    "key",
+    "shim",
+    "polyfill",
+    "ie",
+    "ms-edge"
+  ],
+  "bugs": "https://github.com/shvaikalesh/shim-keyboard-event-key/issues",
+  "license": "MIT",
+  "author": "Aleksey Shvayka <shvaikalesh@gmail.com>",
+  "repository": "shvaikalesh/shim-keyboard-event-key"
+}

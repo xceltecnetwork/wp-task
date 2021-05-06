@@ -1,0 +1,1 @@
+<?php /**PATH /nas/content/live/wpfepizza/wp-content/themes/airfleet/theme/components/footer.blade.php ENDPATH**/ ?>
